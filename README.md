@@ -17,7 +17,7 @@
 - [ ] Specificial individual for each group called "Master".
 - [ ] The more a teacher has listened to different messages, the more likely the group is to be the wiser and therefore to be the winner.
 - [ ] The Master cannot move.
-- [ ] Individuals brings back knwoledge to the master.
+- [ ] Individuals brings back knowledge to the master.
 - [ ] The exchange of message between two individuals is done according to their group and a possible alliance.
 - [ ] Pseudo randomness on the movements.
 - [ ] Pseudo randomness on the reception of the messages.
@@ -57,6 +57,8 @@
 - [ ] Must have an array of string to store messages received and collected during the game.
 - [ ] Must know the previous position ((x,y) or (NE , N , SW , ...)
 - [ ] System of Energy point. Spent outside base, gain inside.
+- [ ] move function are called in a random order for each creature.
+- [ ] The behaviour of the creature depends on the level of EP. If EP>50%, explore , if EP<20%, flee to the base , ...
 - [ ] 
 
 
