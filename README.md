@@ -51,6 +51,15 @@
 - [ ] If after a fixed number of time steps, the game hasn't ended, It will be forced to end.
 - [ ] If so, the winner should be determined by a specific.
 
+### Individuals
+
+- [ ] There must be 2 alliances.
+- [ ] Must have an array of string to store messages received and collected during the game.
+- [ ] Must know the previous position ((x,y) or (NE , N , SW , ...)
+- [ ] System of Energy point. Spent outside base, gain inside.
+- [ ] 
+
+
 ### Code
 
 - [ ] Polymorphism (method reacting to the class of the input).
