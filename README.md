@@ -59,8 +59,6 @@
 - [ ] System of Energy point. Spent outside base, gain inside.
 - [ ] move function are called in a random order for each creature.
 - [ ] The behaviour of the creature depends on the level of EP. If EP>50%, explore , if EP<20%, flee to the base , ...
-- [ ] 
-
 
 ### Code
 
@@ -68,6 +66,3 @@
 - [ ] Static attribute.
 - [ ] Singleton.
 - [ ] Pseudo-random method.
-- [ ] 
-
-### 
