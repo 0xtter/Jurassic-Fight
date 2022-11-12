@@ -1,9 +1,9 @@
 package Individuals;
 
-public class PterodactylusMaster extends Dinosaur implements Master {
+public class PterodactylusMaster extends Pterodactylus implements Master {
 
     private static PterodactylusMaster lUnique;
-    
+
     private PterodactylusMaster(boolean gender, int energyPoints) {
         super(gender, energyPoints);
     };
@@ -14,7 +14,7 @@ public class PterodactylusMaster extends Dinosaur implements Master {
         }
         return lUnique;
     }
-    
+
     public static PterodactylusMaster getInstance() {
         return lUnique;
     }

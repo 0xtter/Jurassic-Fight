@@ -1,6 +1,6 @@
 package Individuals;
 
-public class MosasaurusMaster extends Dinosaur implements Master {
+public class MosasaurusMaster extends Mosasaurus implements Master {
 
     private static MosasaurusMaster lUnique;
     

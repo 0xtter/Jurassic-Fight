@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Dinosaur extends LivingBeeing {
+public abstract class Dinosaur extends LivingBeeing {
 
     private int energyPoints;
-    private ArrayList<String> receivedMessages;
+    private ArrayList<String> receivedMessages = new ArrayList<String>();
     /**
      * Sét of all messages received and given from
      * other individuals of the same race.

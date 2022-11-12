@@ -1,6 +1,6 @@
 package Individuals;
 
-public class TyrannosaurusMaster extends Dinosaur implements Master {
+public class TyrannosaurusMaster extends Tyrannosaurus implements Master {
 
     private static TyrannosaurusMaster lUnique;
     
