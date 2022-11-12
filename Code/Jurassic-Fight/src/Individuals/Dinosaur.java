@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Dinosaur extends LivingBeeing {
+public abstract class Dinosaur extends LivingBeeing {
 
     private int energyPoints;
     private ArrayList<String> receivedMessages;
@@ -23,6 +23,10 @@ public class Dinosaur extends LivingBeeing {
     public int getEnergyPoints() {
         return this.energyPoints;
     }
+
+    public abstract String getTypeOfDinosaur();
+
+    public abstract String getAlliance();
 
     public void increaseEP(int value) {
         this.energyPoints += value;

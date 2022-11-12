@@ -1,8 +1,9 @@
 package Individuals;
 
-public class Mosasaurus extends Dinosaur {
+public abstract class Mosasaurus extends Dinosaur {
 
-    private static String allianceMadeWith;  // nom classe de la race alliée ?
+    private static String allianceMadeWith;  // Type de dinosaure avec qui on fait l'alliance.
+    private static String typeOfDinosaur = "Mosasaurus";
 
     public Mosasaurus(boolean gender, int energyPoints, String alliance) {
         super(gender, energyPoints);
@@ -16,4 +17,9 @@ public class Mosasaurus extends Dinosaur {
     public String setAlliance() {
         return allianceMadeWith;
     }
+
+    public String getTypeOfDinosaur(){
+        return typeOfDinosaur;
+    }
+    
 }

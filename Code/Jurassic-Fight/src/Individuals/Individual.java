@@ -7,5 +7,6 @@ public interface Individual {
     // public default void move(int x, int y) {
     //     // TO-DO
     // }
-
+    
+    public void meet(Dinosaur individual);
 }
