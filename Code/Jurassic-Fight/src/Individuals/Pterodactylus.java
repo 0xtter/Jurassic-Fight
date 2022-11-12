@@ -1,6 +1,6 @@
 package Individuals;
 
-public class Pterodactylus extends Dinosaur {
+public abstract class Pterodactylus extends Dinosaur {
 
     private static String allianceMadeWith;  // nom classe de la race alliée ?
 
@@ -13,4 +13,7 @@ public class Pterodactylus extends Dinosaur {
         return allianceMadeWith;
     }
 
+    public String setAlliance() {
+        return allianceMadeWith;
+    }
 }

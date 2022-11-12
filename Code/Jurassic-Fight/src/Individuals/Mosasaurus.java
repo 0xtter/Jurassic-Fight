@@ -13,4 +13,7 @@ public class Mosasaurus extends Dinosaur {
         return allianceMadeWith;
     }
 
+    public String setAlliance() {
+        return allianceMadeWith;
+    }
 }

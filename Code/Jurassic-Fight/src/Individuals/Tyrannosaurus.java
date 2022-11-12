@@ -1,6 +1,6 @@
 package Individuals;
 
-public class Tyrannosaurus extends Dinosaur {
+public abstract class Tyrannosaurus extends Dinosaur {
 
     private static String allianceMadeWith;  // nom classe de la race alliée ?
 
@@ -13,4 +13,7 @@ public class Tyrannosaurus extends Dinosaur {
         return allianceMadeWith;
     }
 
+    public String setAlliance() {
+        return allianceMadeWith;
+    }
 }
