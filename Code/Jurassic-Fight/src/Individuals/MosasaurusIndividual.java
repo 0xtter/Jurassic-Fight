@@ -2,8 +2,8 @@ package Individuals;
 
 public class MosasaurusIndividual extends Mosasaurus implements Individual {
 
-    public MosasaurusIndividual(boolean gender, int energyPoints, String alliance) {
-        super(gender, energyPoints, alliance);
+    public MosasaurusIndividual(boolean gender, int energyPoints) {
+        super(gender, energyPoints);
     }
 
     public void move(int x, int y) {

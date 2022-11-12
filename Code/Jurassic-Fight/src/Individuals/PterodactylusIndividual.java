@@ -2,8 +2,8 @@ package Individuals;
 
 public class PterodactylusIndividual extends Pterodactylus implements Individual {
 
-    public PterodactylusIndividual(boolean gender, int energyPoints, String alliance) {
-        super(gender, energyPoints, alliance);
+    public PterodactylusIndividual(boolean gender, int energyPoints) {
+        super(gender, energyPoints);
     }
 
     public void move(int x, int y) {
