@@ -2,7 +2,7 @@ package Individuals;
 
 public abstract class Mosasaurus extends Dinosaur {
 
-    private static Race allianceMadeWith;  // nom classe de la race alliée ?
+    private static Race allianceMadeWith;
 
     public Mosasaurus(boolean gender, int energyPoints) {
         super(gender, energyPoints);
@@ -15,4 +15,5 @@ public abstract class Mosasaurus extends Dinosaur {
     public static void setAlliance(Race race) {
         allianceMadeWith = race;
     }
+
 }
