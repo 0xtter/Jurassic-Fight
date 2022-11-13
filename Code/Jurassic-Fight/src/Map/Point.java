@@ -214,4 +214,17 @@ public class Point {
         }
     }
 
+
+    @Override
+    public String toString() {
+        return "{" +
+            " Coord='" + "[ " + this.xCoord.toString() +", " + this.yCoord.toString() + " ]" + "'" +
+            ", symbol='" + getSymbol() + "'" +
+            ", isAvailable='" + isAvailable + "'" +
+            ", isObstacle='" + this.isObstacle + "'" +
+            ", dinausor='" + getDinausor().toString() + "'" +
+            "}";
+    }
+
+
 }

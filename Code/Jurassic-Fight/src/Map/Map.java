@@ -2,6 +2,7 @@ package Map;
 
 import java.util.ArrayList;
 
+import Individuals.Dinosaur;
 import Individuals.Diplodocus;
 import Individuals.DiplodocusIndividual;
 import Individuals.DiplodocusMaster;
@@ -378,6 +379,32 @@ public class Map {
             }
         }
         return moves;
+    }
+
+    /**
+     * Search for dinausors of all races next to a current point (x, y)
+     * @param x >= 0
+     * @param y >= 0
+     * @return list of coordinates to points where there is a dino next to (x,y)
+     */
+    public ArrayList<Point> getDinausorsAround(int x, int y) {
+        ArrayList<Point> dino = new ArrayList<>();
+        
+        Point currentP = getPoint(x, y);
+
+        Point tmpP = null;
+        // search available points next to current point
+        for (Integer xi=x-1; xi<=x+1; xi++) {
+            for (Integer yi=y-1; yi<=y+1; yi++) {
+                try {
+                    tmpP = getPoint(xi, yi);
+                    if (!tmpP.isFree() && tmpP.getDinausor() instanceof Dinosaur && !tmpP.equals(currentP)) { 
+                        dino.add(tmpP);
+                    };
+                } catch (Exception e) { }
+            }
+        }
+        return dino;
     }
 
     public void display() {
