@@ -268,6 +268,12 @@ public class Map {
         currentPoint.free();
     }
 
+    /**
+     * Search for availables points next to a current point (x, y)
+     * @param x >= 0
+     * @param y >= 0
+     * @return list of coordinates to move to
+     */
     public ArrayList<Integer[]> getAvailableMoves(int x, int y) {
         ArrayList<Integer[]> moves = new ArrayList<>();
         
