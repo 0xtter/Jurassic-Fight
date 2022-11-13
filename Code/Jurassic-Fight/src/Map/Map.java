@@ -407,6 +407,140 @@ public class Map {
         return dino;
     }
 
+    /**
+     * In the set of available points near an actual point,
+     * find the point that is the closest to the targetPoint.
+     * @param actualPoint
+     * @param targetPoint
+     * @return { x, y }
+     */
+    public Integer[] findNextMoveToReachPoint(Point actualPoint, Point targetPoint) {
+        Integer nextMove[] = {};
+
+        // get moves options
+        ArrayList<Integer[]> possibleMoves = getAvailableMoves(actualPoint.getX(), actualPoint.getY());
+        if (possibleMoves.size() == 0) { return nextMove; }
+
+        // find the closest next point from the first SafeZone Point
+
+        double min = Math.max(this.nbC, this.nbL);
+        for (int c=0; c<possibleMoves.size(); c++) {
+            Integer[] coord = possibleMoves.get(c);
+            Point Q = getPoint(coord[0], coord[1]);
+            // check if it's the nearest point to target in safezone
+            int distQ = Q.dist(targetPoint);
+            if (distQ == Math.min(min, distQ)) {
+                min = distQ;
+                nextMove = coord;
+            }
+        }
+        return nextMove;
+    }
+
+    /**
+     * Find the next position in order to reach the safezone
+     * @param diplodocus
+     * @return { x, y }
+     * @throws Exception
+     */
+    public Integer[] getDirectionToSafeZone(DiplodocusIndividual diplodocus) throws Exception {
+        Integer nextMove[] = {};
+
+        // looking for dinausor in map
+        Point point = getPoint(diplodocus);
+        if (point == null) { return nextMove; }
+
+        // Check if point is already in safezone
+        if (this.safezoneDiplo.size() == 0) { 
+            throw new Exception("SafeZoneDiplo was not initialized.");
+        }
+        else if (this.safezoneDiplo.contains(point)) { return nextMove; }
+
+        // set as reference the first point of SafeZone
+        Point safezonePoint = this.safezoneDiplo.get(0);
+        nextMove = findNextMoveToReachPoint(point, safezonePoint);
+
+        return nextMove;
+    }
+
+    /**
+     * Find the next position in order to reach the safezone
+     * @param diplodocus
+     * @return { x, y }
+     * @throws Exception
+     */
+    public Integer[] getDirectionToSafeZone(MosasaurusIndividual mosasaurus) throws Exception {
+        Integer nextMove[] = {};
+
+        // looking for dinausor in map
+        Point point = getPoint(mosasaurus);
+        if (point == null) { return nextMove; }
+
+        // Check if point is already in safezone
+        if (this.safezoneMosa.size() == 0) { 
+            throw new Exception("SafeZoneDiplo was not initialized.");
+         }
+        else if (this.safezoneMosa.contains(point)) { return nextMove; }
+
+        // set as reference the first point of SafeZone
+        Point safezonePoint = this.safezoneMosa.get(0);
+        nextMove = findNextMoveToReachPoint(point, safezonePoint);
+
+        return nextMove;
+    }
+
+    /**
+     * Find the next position in order to reach the safezone
+     * @param diplodocus
+     * @return { x, y }
+     * @throws Exception
+     */
+    public Integer[] getDirectionToSafeZone(PterodactylusIndividual pterodactylus) throws Exception {
+        Integer nextMove[] = {};
+
+        // looking for dinausor in map
+        Point point = getPoint(pterodactylus);
+        if (point == null) { return nextMove; }
+
+        // Check if point is already in safezone
+        if (this.safezonePtero.size() == 0) { 
+            throw new Exception("SafeZoneDiplo was not initialized.");
+         }
+        else if (this.safezonePtero.contains(point)) { return nextMove; }
+
+        // set as reference the first point of SafeZone
+        Point safezonePoint = this.safezonePtero.get(0);
+        nextMove = findNextMoveToReachPoint(point, safezonePoint);
+
+        return nextMove;
+    }
+
+    /**
+     * Find the next position in order to reach the safezone
+     * @param diplodocus
+     * @return { x, y }
+     * @throws Exception
+     */
+    public Integer[] getDirectionToSafeZone(TyrannosaurusIndividual tyrannosaurus) throws Exception {
+        Integer nextMove[] = {};
+
+        // looking for dinausor in map
+        Point point = getPoint(tyrannosaurus);
+        if (point == null) { return nextMove; }
+
+        // Check if point is already in safezone
+        if (this.safezoneTyra.size() == 0) { 
+            throw new Exception("SafeZoneDiplo was not initialized.");
+         }
+        else if (this.safezoneTyra.contains(point)) { return nextMove; }
+
+        // set as reference the first point of SafeZone
+        Point safezonePoint = this.safezoneTyra.get(0);
+        nextMove = findNextMoveToReachPoint(point, safezonePoint);
+
+        return nextMove;
+    }
+
     public void display() {
         String firstline = "  ";
         for (int i = 0; i < this.nbC; i++) {

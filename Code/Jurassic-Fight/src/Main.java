@@ -25,7 +25,9 @@ public class Main {
         map.move(mosa, 0, 1);
         map.display();
 
-        // Get Dinousors around a point (utile pour savoir détecter un combat)
+        /**
+         * Get Dinousors around a point (utile pour savoir détecter un combat)
+         */
 
         ArrayList<Point> dino = map.getDinausorsAround(2, 3);
 
@@ -35,7 +37,9 @@ public class Main {
         }
         System.out.println("");
 
-        // Get available Points next to a point
+        /**
+         * Get available Points next to a point
+         */
         
         ArrayList<Integer[]> moves = map.getAvailableMoves(0, 1);
 
@@ -43,5 +47,14 @@ public class Main {
         for (int c=0; c < moves.size(); c++) {
             System.out.println("[ " + moves.get(c)[0].toString() + ", " + moves.get(c)[1].toString() + " ]");
         }
+        System.out.println("");
+
+        /**
+         * get direction to safezone
+         */
+
+        Integer safezoneMove[] = map.getDirectionToSafeZone(diplo);
+
+        //System.out.println("[ " + safezoneMove[0].toString() + ", " + safezoneMove[1].toString() + " ]");
     }
 }

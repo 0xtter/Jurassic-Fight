@@ -214,6 +214,28 @@ public class Point {
         }
     }
 
+    /**
+     * Compute distance with another Point Q
+     * @param Q
+     * @return distance
+     */
+    public int dist(Point Q) {
+        int xQ = Q.getX().intValue();
+        int yQ = Q.getY().intValue();
+        int x = this.xCoord.intValue();
+        int y = this.yCoord.intValue();
+
+        int distX;
+        if (x <= xQ) { distX = xQ - x; }
+        else { distX = x - xQ; }
+
+        int distY;
+        if (y <= yQ) { distY = yQ - y; }
+        else { distY = y - yQ; }
+
+        return distX + distY;
+    }
+
 
     @Override
     public String toString() {
