@@ -367,16 +367,27 @@ public class Map {
         Point currentPoint = getPoint(x, y);    // to be sure that the point exists.
 
         Point tmpP = null;
+
+        
+        Integer movesAvailable[][] = {
+            { -1, 2 },
+            { 1, 2 },
+            { 2, -1 },
+            { 2, 1 },
+            { 1, -2 },
+            { -1, -2 },
+            { -2, -1 },
+            { -2, 1 }
+        }; // Movements of a knight (chess) : see https://en.wikipedia.org/wiki/Knight_(chess)#Movement
+        
         // search available points next to current point
-        for (Integer xi=x-1; xi<=x+1; xi++) {
-            for (Integer yi=y-1; yi<=y+1; yi++) {
-                try {
-                    tmpP = getPoint(xi, yi);
-                    if (tmpP.isFree() && !tmpP.equals(currentPoint)) { 
-                        moves.add(tmpP.getCoord());
-                    };
-                } catch (Exception e) { }
-            }
+        for (Integer currenMove[] : movesAvailable) {
+            try{
+                tmpP = getPoint(x + currenMove[0], y + currenMove[1]);
+                if (tmpP.isFree() && !tmpP.equals(currentPoint)) { 
+                    moves.add(tmpP.getCoord());
+                };
+            } catch (Exception e) {}
         }
         return moves;
     }
