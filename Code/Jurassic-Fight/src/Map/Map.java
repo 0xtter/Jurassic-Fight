@@ -17,23 +17,28 @@ import Individuals.TyrannosaurusMaster;
 
 public class Map {
 
-    private ArrayList<ArrayList<Point>> matrix;
     private Integer nbL;                            // nb of lines
     private Integer nbC;                            // nb of columns
+    private ArrayList<ArrayList<Point>> matrix;
+    private ArrayList<Point> safezoneDiplo = new ArrayList<>();
+    private ArrayList<Point> safezoneMosa = new ArrayList<>();
+    private ArrayList<Point> safezonePtero = new ArrayList<>();
+    private ArrayList<Point> safezoneTyra = new ArrayList<>();
     
-    public Map(Integer nbLines, Integer nbCol) {
+    /**
+     * 
+     * @param nbLines >= 4
+     * @param nbCol >= 4
+     * @throws Exception "Map shape must be at least (3, 3)."
+     */
+    public Map(Integer nbLines, Integer nbCol) throws Exception {
+        if (!( nbLines > 3 && nbCol > 3)) {
+            throw new Exception("Map shape must be at least (3, 3).");
+        }
         this.nbL = nbLines;
         this.nbC = nbCol;
         initMatrix(nbLines, nbCol);
-    }
-
-    /**
-     * Get the n*m size of the map
-     * @return { n, m }
-     */
-    public Integer[] getShape() {
-        Integer shape[] = { this.nbL, this.nbL };
-        return shape;
+        initSafezones();
     }
     
     /**
@@ -41,7 +46,7 @@ public class Map {
      * @param nbLines
      * @param nbCol
      */
-    private void initMatrix(Integer nbLines, Integer nbCol) {
+    private void initMatrix(Integer nbLines, Integer nbCol) throws Exception {
         this.matrix = new ArrayList<>();
         for (int i = 0; i < nbLines; i++) {
             ArrayList<Point> line = new ArrayList<>();
@@ -53,8 +58,77 @@ public class Map {
         }
     }
 
+    /**
+     * Create safeZones.
+     * Change symbol of points in SafeZones.
+     * 
+     * L'attribution des coins à une race n'est pas (encore) aléatoire
+     */
+    private void initSafezones() {
+        int area = this.nbC.intValue() * this.nbL.intValue();
+        if (area%2 == 1) { area -= 1; }
+
+        // sum of area of all SZ must be <= area of half of the map
+        int areaOfSZ = area / (2*4);
+
+        // we want SZ to be squares, compute length of square sides
+        double sideSZ = Math.floor(Math.sqrt(areaOfSZ));
+        int side = (int) sideSZ;
+
+        // add points to safeZones
+
+        // right top corner / PTERA Dino
+        for (int xi=0; xi<side; xi++) {
+            for (int yi=0; yi<side; yi++) {
+                this.safezonePtero.add(getPoint(xi, yi));
+                getPoint(xi, yi).setSymbol("~");
+            }
+        }
+        
+        // right top corner / DIPLO Dino
+        for (int xi=0; xi<side; xi++) {
+            for (int yi=this.nbC-side; yi<this.nbC; yi++) {
+                this.safezoneDiplo.add(getPoint(xi, yi));
+                getPoint(xi, yi).setSymbol("~");
+            }
+        }
+
+        // left bottom corner / MOSA Dino
+        for (int xi=this.nbL-side; xi<this.nbL; xi++) {
+            for (int yi=0; yi<side; yi++) {
+                this.safezoneMosa.add(getPoint(xi, yi));
+                getPoint(xi, yi).setSymbol("~");
+            }
+        }
+
+        // right bottom corner / TYRA Dino
+        for (int xi=this.nbL-side; xi<this.nbL; xi++) {
+            for (int yi=this.nbC-side; yi<this.nbC; yi++) {
+                this.safezoneTyra.add(getPoint(xi, yi));
+                getPoint(xi, yi).setSymbol("~");
+            }
+        }
+        
+    }
+
+    /**
+     * Get the n*m size of the map
+     * @return { n, m }
+     */
+    public Integer[] getShape() {
+        Integer shape[] = { this.nbL, this.nbL };
+        return shape;
+    }
+
     public Point getPoint(Integer x, Integer y) {
         return this.matrix.get(x).get(y);
+    }
+
+    public boolean isPointInSafeZone(Point point) {
+        return this.safezoneDiplo.contains(point) || 
+                this.safezoneMosa.contains(point) ||
+                this.safezonePtero.contains(point) ||
+                this.safezoneTyra.contains(point);
     }
 
     /**
@@ -192,17 +266,20 @@ public class Map {
      * @throws Exception "Can't move a DiplodocusIndividual that is not on the map."
      */
     public void move(DiplodocusIndividual dinausor, Integer x, Integer y) throws Exception {
-        Point actualPoint = getPoint(dinausor);
+        Point currentPoint = getPoint(dinausor);
         Point nextPoint = getPoint(x, y);
 
-        if (actualPoint == null) {
+        if (currentPoint == null) {
             throw new Exception("Can't move a MosasaurusIndividual that is not on the map.");
         }
         
         nextPoint.placeDinausor(dinausor);
-        nextPoint.setSymbol(actualPoint.getSymbol());
+        nextPoint.setSymbol(currentPoint.getSymbol());
 
-        actualPoint.free();
+        currentPoint.free();
+        if (isPointInSafeZone(currentPoint)) {
+            currentPoint.setSymbol("~");
+        }
     }
 
     /**
@@ -213,17 +290,20 @@ public class Map {
      * @throws Exception "Can't move a MosasaurusIndividual that is not on the map."
      */
     public void move(MosasaurusIndividual dinausor, Integer x, Integer y) throws Exception {
-        Point actualPoint = getPoint(dinausor);
+        Point currentPoint = getPoint(dinausor);
         Point nextPoint = getPoint(x, y);
 
-        if (actualPoint == null) {
+        if (currentPoint == null) {
             throw new Exception("Can't move a MosasaurusIndividual that is not on the map.");
         }
         
         nextPoint.placeDinausor(dinausor);
-        nextPoint.setSymbol(actualPoint.getSymbol());
+        nextPoint.setSymbol(currentPoint.getSymbol());
 
-        actualPoint.free();
+        currentPoint.free();
+        if (isPointInSafeZone(currentPoint)) {
+            currentPoint.setSymbol("~");
+        }
     }
 
     /**
@@ -234,17 +314,20 @@ public class Map {
      * @throws Exception "Can't move a PterodactylusIndividual that is not on the map."
      */
     public void move(PterodactylusIndividual dinausor, Integer x, Integer y) throws Exception {
-        Point actualPoint = getPoint(dinausor);
+        Point currentPoint = getPoint(dinausor);
         Point nextPoint = getPoint(x, y);
 
-        if (actualPoint == null) {
+        if (currentPoint == null) {
             throw new Exception("Can't move a PterodactylusIndividual that is not on the map.");
         }
         
         nextPoint.placeDinausor(dinausor);
-        nextPoint.setSymbol(actualPoint.getSymbol());
+        nextPoint.setSymbol(currentPoint.getSymbol());
 
-        actualPoint.free();
+        currentPoint.free();
+        if (isPointInSafeZone(currentPoint)) {
+            currentPoint.setSymbol("~");
+        }
     }
 
     /**
@@ -266,6 +349,9 @@ public class Map {
         nextPoint.setSymbol(currentPoint.getSymbol());
 
         currentPoint.free();
+        if (isPointInSafeZone(currentPoint)) {
+            currentPoint.setSymbol("~");
+        }
     }
 
     /**

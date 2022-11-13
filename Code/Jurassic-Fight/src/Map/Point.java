@@ -66,6 +66,7 @@ public class Point {
 
     /**
      * Remove Dinausor or Obstacle from the point.
+     * Sets symbol to "·"
      */
     public void free() {
         this.symbol = "·";
