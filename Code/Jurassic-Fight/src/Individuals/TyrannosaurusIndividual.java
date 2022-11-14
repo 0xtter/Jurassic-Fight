@@ -1,9 +1,11 @@
 package Individuals;
 
+import Map.Map;
+
 public class TyrannosaurusIndividual extends Tyrannosaurus implements Individual, Interractions {
 
-    public TyrannosaurusIndividual(boolean gender, int energyPoints) {
-        super(gender, energyPoints);
+    public TyrannosaurusIndividual(boolean gender, int energyPoints, Map map) {
+        super(gender, energyPoints,map);
     }
 
     public void move(int x, int y) {

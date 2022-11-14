@@ -1,11 +1,13 @@
 package Individuals;
 
+import Map.Map;
+
 public abstract class Pterodactylus extends Dinosaur {
 
     private static Race allianceMadeWith;
 
-    public Pterodactylus(boolean gender, int energyPoints) {
-        super(gender, energyPoints);
+    public Pterodactylus(boolean gender, int energyPoints, Map map) {
+        super(gender, energyPoints, map);
     }
 
     public static Race getAlliance() {

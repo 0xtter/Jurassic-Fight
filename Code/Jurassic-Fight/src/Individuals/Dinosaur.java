@@ -4,19 +4,24 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
+import Map.Map;
+
 public abstract class Dinosaur extends LivingBeeing {
 
     private int energyPoints;
-    private ArrayList<String> receivedMessages = new ArrayList<String>();
     /**
-     * Sét of all messages received and given from
+     * Set of all messages received and given from
      * other individuals of the same race.
      * No duplicates.
      */
-    private Set<String> collectedMessages = new HashSet<>(receivedMessages);
+    private Set<String> collectedMessages = new HashSet<>();
 
-    public Dinosaur(boolean gender, int EP) {
-        super(gender);
+    public Set<String> getCollectedMessages() {
+        return collectedMessages;
+    }
+
+    public Dinosaur(boolean gender, int EP, Map map) {
+        super(gender,map);
         this.energyPoints = EP;
     }
 
@@ -30,21 +35,6 @@ public abstract class Dinosaur extends LivingBeeing {
 
     public void decreaseEP(int value) {
         this.energyPoints -= value;
-    }
-
-    public ArrayList<String> getReceivedMessages() {
-        return this.receivedMessages;
-    }
-
-    /**
-     * Sauvegarde un message recu dans une liste
-     * de messages personnellement recus, et à un ensemble
-     * de tous les messages connus de l'individu.
-     * @param msg
-     */
-    public void storeReceivedMsg(String msg) {
-        this.receivedMessages.add(msg);
-        this.collectedMessages.add(msg);
     }
 
     /**

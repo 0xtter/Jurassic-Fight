@@ -1,13 +1,11 @@
 package Individuals;
 
+import Map.Map;
+
 public class DiplodocusIndividual extends Diplodocus implements Individual, Interractions {
 
-    public DiplodocusIndividual(boolean gender, int energyPoints) {
-        super(gender, energyPoints);
-    }
-
-    public void move(int x, int y) {
-        // TO-DO
+    public DiplodocusIndividual(boolean gender, int energyPoints, Map map) {
+        super(gender, energyPoints,map);
     }
 
     public void meet(DiplodocusIndividual diplodocusI) {
