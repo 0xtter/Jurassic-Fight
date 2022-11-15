@@ -4,7 +4,7 @@ import Map.Map;
 
 public abstract class Tyrannosaurus extends Dinosaur {
 
-    private static Race allianceMadeWith;
+    private static Race allianceMadeWith = Race.Pterodactylus;
 
     public Tyrannosaurus(boolean gender, int energyPoints, Map map) {
         super(gender, energyPoints,map);
