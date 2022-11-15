@@ -29,7 +29,7 @@ public class Point {
     public Point(Integer xCoord, Integer yCoord) {
         this.xCoord = xCoord;
         this.yCoord = yCoord;
-        this.symbol = "·";
+        this.symbol = "··";
         this.isAvailable = true;
         this.isObstacle = false;
         this.dinausor = new Object();
@@ -69,7 +69,7 @@ public class Point {
      * Sets symbol to "·"
      */
     public void free() {
-        this.symbol = "·";
+        this.symbol = "··";
         this.isAvailable = true;
         this.isObstacle = false;
         this.dinausor = new Object();
@@ -87,11 +87,15 @@ public class Point {
         return true;
     }
 
-    public void placeObstacle(String symbol) {
-        this.symbol = symbol;
-        this.isAvailable = false;
-        this.isObstacle = true;
-        this.dinausor = new Object();
+    public void placeObstacle(String symbol) throws Exception {
+        if (isFree()) {
+            this.symbol = symbol;
+            this.isAvailable = false;
+            this.isObstacle = true;
+            this.dinausor = new Object();
+        } else {
+            throw new Exception(String.format("The point (%d, %d) is already in use.", this.xCoord, this.yCoord));
+        }
     }
 
     /**
@@ -102,10 +106,10 @@ public class Point {
     protected void placeDinausor(DiplodocusIndividual dinausor) throws Exception {
         if (isFree()) {
             this.dinausor = dinausor;
-            this.symbol = "D";
+            this.symbol = "Dx";
             this.isAvailable = false;
         } else {
-            throw new Exception("The point is already in use.");
+            throw new Exception(String.format("The point (%d, %d) is already in use.", this.xCoord, this.yCoord));
         }
     }
 
@@ -120,7 +124,7 @@ public class Point {
             this.symbol ="#D";
             this.isAvailable = false;
         } else {
-            throw new Exception("The point is already in use.");
+            throw new Exception(String.format("The point (%d, %d) is already in use.", this.xCoord, this.yCoord));
         }
     }
 
@@ -132,10 +136,10 @@ public class Point {
     protected void placeDinausor(MosasaurusIndividual dinausor) throws Exception {
         if (isFree()) {
             this.dinausor = dinausor;
-            this.symbol = "M";
+            this.symbol = "Mx";
             this.isAvailable = false;
         } else {
-            throw new Exception("The point is already in use.");
+            throw new Exception(String.format("The point (%d, %d) is already in use.", this.xCoord, this.yCoord));
         }
     }
 
@@ -150,7 +154,7 @@ public class Point {
             this.symbol = "#M";
             this.isAvailable = false;
         } else {
-            throw new Exception("The point is already in use.");
+            throw new Exception(String.format("The point (%d, %d) is already in use.", this.xCoord, this.yCoord));
         }
     }
 
@@ -162,10 +166,10 @@ public class Point {
     protected void placeDinausor(PterodactylusIndividual dinausor) throws Exception {
         if (isFree()) {
             this.dinausor = dinausor;
-            this.symbol = "P";
+            this.symbol = "Px";
             this.isAvailable = false;
         } else {
-            throw new Exception("The point is already in use.");
+            throw new Exception(String.format("The point (%d, %d) is already in use.", this.xCoord, this.yCoord));
         }
     }
 
@@ -180,7 +184,7 @@ public class Point {
             this.symbol = "#P";
             this.isAvailable = false;
         } else {
-            throw new Exception("The point is already in use.");
+            throw new Exception(String.format("The point (%d, %d) is already in use.", this.xCoord, this.yCoord));
         }
     }
 
@@ -192,10 +196,10 @@ public class Point {
     protected void placeDinausor(TyrannosaurusIndividual dinausor) throws Exception {
         if (isFree()) {
             this.dinausor = dinausor;
-            this.symbol = "T";
+            this.symbol = "Tx";
             this.isAvailable = false;
         } else {
-            throw new Exception("The point is already in use.");
+            throw new Exception(String.format("The point (%d, %d) is already in use.", this.xCoord, this.yCoord));
         }
     }
 
@@ -210,7 +214,7 @@ public class Point {
             this.symbol = "#T";
             this.isAvailable = false;
         } else {
-            throw new Exception("The point is already in use.");
+            throw new Exception(String.format("The point (%d, %d) is already in use.", this.xCoord, this.yCoord));
         }
     }
 

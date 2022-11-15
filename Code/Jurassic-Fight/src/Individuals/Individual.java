@@ -55,6 +55,7 @@ public interface Individual {
         if (dino.getEnergyPoints() <= 40){
             System.out.println("Cannot move not enough EP");
             //DIE
+            
         }else if(dino.getCollectedMessages().size() >= Individual.maxKnowledge){
             System.out.println("All the knowledge has been acquired, moving to base");
             //MOVE TO BASE

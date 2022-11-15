@@ -1,5 +1,7 @@
 package Map;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 import java.util.ArrayList;
 
 import Individuals.Dinosaur;
@@ -78,11 +80,11 @@ public class Map {
 
         // add points to safeZones
 
-        // right top corner / PTERA Dino
+        // left top corner / PTERO Dino
         for (int xi=0; xi<side; xi++) {
             for (int yi=0; yi<side; yi++) {
                 this.safezonePtero.add(getPoint(xi, yi));
-                getPoint(xi, yi).setSymbol("~");
+                getPoint(xi, yi).setSymbol("~~");
             }
         }
         
@@ -90,7 +92,7 @@ public class Map {
         for (int xi=0; xi<side; xi++) {
             for (int yi=this.nbC-side; yi<this.nbC; yi++) {
                 this.safezoneDiplo.add(getPoint(xi, yi));
-                getPoint(xi, yi).setSymbol("~");
+                getPoint(xi, yi).setSymbol("~~");
             }
         }
 
@@ -98,7 +100,7 @@ public class Map {
         for (int xi=this.nbL-side; xi<this.nbL; xi++) {
             for (int yi=0; yi<side; yi++) {
                 this.safezoneMosa.add(getPoint(xi, yi));
-                getPoint(xi, yi).setSymbol("~");
+                getPoint(xi, yi).setSymbol("~~");
             }
         }
 
@@ -106,10 +108,63 @@ public class Map {
         for (int xi=this.nbL-side; xi<this.nbL; xi++) {
             for (int yi=this.nbC-side; yi<this.nbC; yi++) {
                 this.safezoneTyra.add(getPoint(xi, yi));
-                getPoint(xi, yi).setSymbol("~");
+                getPoint(xi, yi).setSymbol("~~");
             }
         }
         
+    }
+
+    public void populate() throws Exception {
+        // PTERO
+        PterodactylusMaster pteroMaster = PterodactylusMaster.createUnique(false, 100, this);
+        this.safezonePtero.get(0).placeDinausor(pteroMaster);
+        for (int i=1; i<this.safezonePtero.size(); i++) {
+            PterodactylusIndividual dino = new PterodactylusIndividual(false, 100, this);
+            this.safezonePtero.get(i).placeDinausor(dino);
+            this.safezonePtero.get(i).setSymbol(String.format("T%d", i));
+        }
+
+        // DIPLO
+        DiplodocusMaster diploMaster = DiplodocusMaster.createUnique(false, 100, this);
+        this.safezoneDiplo.get(0).placeDinausor(diploMaster);
+        for (int i=1; i<this.safezoneDiplo.size(); i++) {
+            DiplodocusIndividual dino = new DiplodocusIndividual(false, 100, this);
+            this.safezoneDiplo.get(i).placeDinausor(dino);
+            this.safezoneDiplo.get(i).setSymbol(String.format("D%d", i));
+        }
+
+        // MOSA
+        MosasaurusMaster mosaMaster = MosasaurusMaster.createUnique(false, 100, this);
+        this.safezoneMosa.get(0).placeDinausor(mosaMaster);
+        for (int i=1; i<this.safezoneMosa.size(); i++) {
+            MosasaurusIndividual dino = new MosasaurusIndividual(false, 100, this);
+            this.safezoneMosa.get(i).placeDinausor(dino);
+            this.safezoneMosa.get(i).setSymbol(String.format("M%d", i));
+        }
+
+        // TYRA
+        TyrannosaurusMaster tyraMaster = TyrannosaurusMaster.createUnique(false, 100, this);
+        this.safezoneTyra.get(0).placeDinausor(tyraMaster);
+        for (int i=1; i<this.safezoneTyra.size(); i++) {
+            TyrannosaurusIndividual dino = new TyrannosaurusIndividual(false, 100, this);
+            this.safezoneTyra.get(i).placeDinausor(dino);
+            this.safezoneTyra.get(i).setSymbol(String.format("T%d", i));
+        }
+    }
+
+    public void generateObstacles() {
+        // on selectionne arbitrairement 1 dixieme de la map pour etre
+        // des obstacles
+        int nbObst = (int) Math.floor((this.nbC * this.nbL) / 10);
+        int count = 0;
+        while (count < nbObst) {
+            int yRand = ThreadLocalRandom.current().nextInt(0, this.nbC);
+            int xRand = ThreadLocalRandom.current().nextInt(0, this.nbL);
+            try {
+                placeObstacle("OB", xRand, yRand);
+                count++;
+            } catch (Exception err) { }
+        }
     }
 
     /**
@@ -447,7 +502,7 @@ public class Map {
         // Check if point is already in safezone
         if (this.safezoneTyra.size() == 0) { 
             throw new Exception("SafeZoneDiplo was not initialized.");
-         }
+        }
         else if (this.safezoneTyra.contains(point)) { return nextMove; }
 
         // set as reference the first point of SafeZone
@@ -471,10 +526,27 @@ public class Map {
     }
 
 
+    public ArrayList<Point> getMosaSafeZone() {
+        return this.safezoneMosa;
+    }
+
+    public ArrayList<Point> getPteroSafeZone() {
+        return this.safezonePtero;
+    }
+
+    public ArrayList<Point> getTyraSafeZone() {
+        return this.safezoneTyra;
+    }
+
+    public ArrayList<Point> getDiploSafeSone() {
+        return this.safezoneTyra;
+    }
+
+
     public void display() {
         String firstline = "  ";
         for (int i = 0; i < this.nbC; i++) {
-            firstline += Integer.toString(i) + " ";
+            firstline += Integer.toString(i) + "  ";
         }
         firstline += "\n";
 
