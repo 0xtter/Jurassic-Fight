@@ -1,13 +1,11 @@
 package Individuals;
 
+import Map.Map;
+
 public class MosasaurusIndividual extends Mosasaurus implements Individual, Interractions {
 
-    public MosasaurusIndividual(boolean gender, int energyPoints) {
-        super(gender, energyPoints);
-    }
-
-    public void move(int x, int y) {
-        // TO-DO
+    public MosasaurusIndividual(boolean gender, int energyPoints, Map map) {
+        super(gender, energyPoints, map);
     }
 
     public void meet(DiplodocusIndividual diplodocusI) {

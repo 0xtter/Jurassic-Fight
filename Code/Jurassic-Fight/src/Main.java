@@ -13,16 +13,17 @@ public class Main {
     
     private static final Logger log = Logger.getLogger(Main.class.getName()); 
     public static void main(String[] args) throws Exception {
-        DiplodocusIndividual diplo = new DiplodocusIndividual(false, 100);
-        MosasaurusIndividual mosa = new MosasaurusIndividual(false, 100);
-        TyrannosaurusIndividual tyra = new TyrannosaurusIndividual(false, 100);
-
         Map map = new Map(9,11);
+
+        DiplodocusIndividual diplo = new DiplodocusIndividual(false, 100,map);
+        MosasaurusIndividual mosa = new MosasaurusIndividual(false, 100,map);
+        TyrannosaurusIndividual tyra = new TyrannosaurusIndividual(false, 100, map);
+
         map.placeObstacle("X", 1, 1);
         map.place(mosa, 0, 0);
         map.place(diplo, 2, 3);
         map.place(tyra, 1, 4);
-        map.move(mosa, 0, 1);
+        map.move(mosa, 5, 5);
         map.display();
 
         /**
@@ -37,18 +38,7 @@ public class Main {
         }
         System.out.println("");
 
-        /**
-         * Get available Points next to a point
-         */
-        
-        ArrayList<Integer[]> moves = map.getAvailableMoves(0, 1);
-
-        System.out.println("Possible next moves from point (0, 1) :");
-        for (int c=0; c < moves.size(); c++) {
-            System.out.println("[ " + moves.get(c)[0].toString() + ", " + moves.get(c)[1].toString() + " ]");
-        }
-        System.out.println("");
-
+        mosa.move(mosa);
         /**
          * get direction to safezone
          */

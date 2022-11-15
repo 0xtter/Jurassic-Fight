@@ -1,11 +1,13 @@
 package Individuals;
 
+import Map.Map;
+
 public abstract class Mosasaurus extends Dinosaur {
 
     private static Race allianceMadeWith;
 
-    public Mosasaurus(boolean gender, int energyPoints) {
-        super(gender, energyPoints);
+    public Mosasaurus(boolean gender, int energyPoints, Map map) {
+        super(gender, energyPoints,map);
     }
 
     public static Race getAlliance() {

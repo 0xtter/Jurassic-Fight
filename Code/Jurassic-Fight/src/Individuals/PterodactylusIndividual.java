@@ -1,9 +1,11 @@
 package Individuals;
 
+import Map.Map;
+
 public class PterodactylusIndividual extends Pterodactylus implements Individual, Interractions {
 
-    public PterodactylusIndividual(boolean gender, int energyPoints) {
-        super(gender, energyPoints);
+    public PterodactylusIndividual(boolean gender, int energyPoints, Map map) {
+        super(gender, energyPoints, map);
     }
 
     public void move(int x, int y) {
