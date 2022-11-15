@@ -13,38 +13,15 @@ public class Main {
     
     private static final Logger log = Logger.getLogger(Main.class.getName()); 
     public static void main(String[] args) throws Exception {
-        Map map = new Map(9,11);
 
-        DiplodocusIndividual diplo = new DiplodocusIndividual(false, 100,map);
-        MosasaurusIndividual mosa = new MosasaurusIndividual(false, 100,map);
-        TyrannosaurusIndividual tyra = new TyrannosaurusIndividual(false, 100, map);
+        final int maxSteps = 10000;
+        
+        Integer nbLines = Forms.askForInteger(5, 20, "Saisir le nombre de la lignes de la carte (min 5, max 20)");
+        Integer nbCol = Forms.askForInteger(5, 20, "Saisir le nombre de la colonnes de la carte (min 5, max 20)");
 
-        map.placeObstacle("X", 1, 1);
-        map.place(mosa, 0, 0);
-        map.place(diplo, 2, 3);
-        map.place(tyra, 1, 4);
-        map.move(mosa, 5, 5);
+        Map map = new Map(nbLines, nbCol);
+        map.populate();
+        map.generateObstacles(); // TO-DO Aleatoire obstacles !!!
         map.display();
-
-        /**
-         * Get Dinousors around a point (utile pour savoir détecter un combat)
-         */
-
-        ArrayList<Point> dino = map.getDinausorsAround(2, 3);
-
-        System.out.println("\nDino next to (2, 3) :");
-        for (int c=0; c < dino.size(); c++) {
-            System.out.println(dino.get(c).toString());
-        }
-        System.out.println("");
-
-        mosa.move(mosa);
-        /**
-         * get direction to safezone
-         */
-
-        Integer safezoneMove[] = map.getDirectionToSafeZone(diplo);
-
-        //System.out.println("[ " + safezoneMove[0].toString() + ", " + safezoneMove[1].toString() + " ]");
     }
 }

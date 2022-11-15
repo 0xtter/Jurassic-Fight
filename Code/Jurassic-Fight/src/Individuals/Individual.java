@@ -3,7 +3,6 @@ package Individuals;
 import java.util.ArrayList;
 import java.util.Random;
 
-import Map.Map;
 import Map.Point;
 
 public interface Individual {
@@ -56,6 +55,7 @@ public interface Individual {
         if (dino.getEnergyPoints() <= 40){
             System.out.println("Cannot move not enough EP");
             //DIE
+            
         }else if(dino.getCollectedMessages().size() >= Individual.maxKnowledge){
             System.out.println("All the knowledge has been acquired, moving to base");
             //MOVE TO BASE
@@ -80,6 +80,8 @@ public interface Individual {
                 for(Integer[] step : path){
                     System.out.println("[ " + step[0] + " , " +  step[1] + " ]");
                 }
+
+                //Step on each tile of the path checking if he encounters a dino
 
 
             }catch(Exception e){
