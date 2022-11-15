@@ -457,6 +457,20 @@ public class Map {
         return nextMove;
     }
 
+
+    /**
+     * Kill a dinausor on the map, ie replace it by an obstacle
+     * @param dinosaur
+     * @param symbolObstacle char to display instead of the Dinausor
+     * @throws Exception
+     */
+    public void killDinausor(Dinosaur dinosaur, String symbolObstacle) throws Exception {
+        Point point = getPoint(dinosaur);
+        point.free();
+        point.placeObstacle(symbolObstacle);
+    }
+
+
     public void display() {
         String firstline = "  ";
         for (int i = 0; i < this.nbC; i++) {
