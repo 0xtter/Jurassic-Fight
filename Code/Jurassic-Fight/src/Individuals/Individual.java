@@ -3,7 +3,6 @@ package Individuals;
 import java.util.ArrayList;
 import java.util.Random;
 
-import Map.Map;
 import Map.Point;
 
 public interface Individual {
@@ -80,6 +79,8 @@ public interface Individual {
                 for(Integer[] step : path){
                     System.out.println("[ " + step[0] + " , " +  step[1] + " ]");
                 }
+
+                //Step on each tile of the path checking if he encounters a dino
 
 
             }catch(Exception e){

@@ -23,7 +23,6 @@ public class Main {
         map.place(mosa, 0, 0);
         map.place(diplo, 2, 3);
         map.place(tyra, 1, 4);
-        map.move(mosa, 5, 5);
         map.display();
 
         /**
@@ -36,6 +35,7 @@ public class Main {
         for (int c=0; c < dino.size(); c++) {
             System.out.println(dino.get(c).toString());
         }
+
         System.out.println("");
 
         mosa.move(mosa);
