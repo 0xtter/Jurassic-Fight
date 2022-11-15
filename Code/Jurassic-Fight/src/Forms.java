@@ -2,6 +2,12 @@ import java.util.Scanner;  // Import the Scanner class
 
 public class Forms {
 
+    public static String promptEnterKey(){
+        System.out.println("Appuyer sur \"ENTER\" pour continuer...");
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextLine();
+     }
+
 
     public static Integer askForInteger(Integer min, Integer max, String prompt) {
         
