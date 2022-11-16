@@ -3,7 +3,7 @@ import java.util.Scanner;  // Import the Scanner class
 public class Forms {
 
     public static String promptEnterKey(){
-        System.out.println("Appuyer sur \"ENTER\" pour continuer...");
+        System.out.println("Appuyer sur \"ENTER\" pour continuer... (ou 'finir' pour terminer la simulation)");
         Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();
      }

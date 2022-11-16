@@ -29,7 +29,7 @@ public class Point {
     public Point(Integer xCoord, Integer yCoord) {
         this.xCoord = xCoord;
         this.yCoord = yCoord;
-        this.symbol = "··";
+        this.symbol = "·";
         this.isAvailable = true;
         this.isObstacle = false;
         this.dinausor = new Object();

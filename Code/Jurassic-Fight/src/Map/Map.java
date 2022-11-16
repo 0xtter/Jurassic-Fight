@@ -544,24 +544,44 @@ public class Map {
 
 
     public void display() {
-        String firstline = "  ";
-        for (int i = 0; i < this.nbC; i++) {
-            firstline += Integer.toString(i) + "  ";
-        }
-        firstline += "\n";
 
-        String str = "";
+        ArrayList<Integer> maxSymbolLengthByCol = new ArrayList<>();
+
+        // get max length by column
+        for (int j=0; j < this.nbC; j++) {
+            int maxSymbolLengthCol = 0;
+            for(int i=0; i < this.nbL ;i++) {
+                maxSymbolLengthCol = Math.max(maxSymbolLengthCol, getPoint(i, j).getSymbol().length());
+            }
+            maxSymbolLengthByCol.add(maxSymbolLengthCol);
+        }
+
+        String indexLine = this.nbL > 9 ? "   " : "   ";
+        for (int j=0; j < this.nbC; j++) {
+            indexLine += Integer.toString(j) + new String(new char[maxSymbolLengthByCol.get(j) - String.format("%d", j).length() + 1]).replace("\0", " ");
+        }
+        indexLine += "\n";
+
+        String mapstr = indexLine;
 
         for (int i = 0; i < this.nbL; i++) {
-            str += Integer.toString(i) + " ";
-            for(int j=0; j < this.nbC ;j++){
+            String spaceBtwIndexAndMap = i > 9 ? " " : "  ";
+            mapstr += Integer.toString(i) + spaceBtwIndexAndMap;
+
+            for(int j=0; j < this.nbC ;j++) {
                 String symbol = getPoint(i, j).getSymbol();
-                str += symbol + " ";
+
+                // alignement des cases si des points avec des noms de longueur différentes
+                String align = new String(new char[maxSymbolLengthByCol.get(j)-symbol.length()]).replace("\0", " ");
+
+                align = symbol.length() == 1 ? align.replace(" ", symbol) : align;
+
+                mapstr += symbol + align + " ";
             }
-            str += "\n";
+            mapstr += "\n";
         }
 
-        System.out.println(firstline + str);
+        System.out.println(mapstr);
     }
 
 }

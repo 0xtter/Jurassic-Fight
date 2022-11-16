@@ -42,8 +42,8 @@ public class Main {
             // point d'arret à la fin d'un step
             if (pauseAtEndOfStep) {
                 input = Forms.promptEnterKey();
-                // si "fin" on termine la simulation
-                pauseAtEndOfStep = input.equals("fin") ? false : true;
+                // si "finir" on termine la simulation
+                pauseAtEndOfStep = input.equals("finir") ? false : true;
             }
             step++;
         }
