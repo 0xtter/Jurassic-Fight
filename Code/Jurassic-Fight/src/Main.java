@@ -1,13 +1,9 @@
 import java.util.ArrayList;
 
 import org.apache.log4j.Logger;
-
-import Individuals.DiplodocusIndividual;
-import Individuals.MosasaurusIndividual;
-import Individuals.Tyrannosaurus;
-import Individuals.TyrannosaurusIndividual;
-import Map.Map;
-import Map.Point;
+import Mechanics.*;
+import Individuals.*;
+import Map.*;
 
 public class Main {
     
@@ -16,6 +12,12 @@ public class Main {
         DiplodocusIndividual diplo = new DiplodocusIndividual(false, 100);
         MosasaurusIndividual mosa = new MosasaurusIndividual(false, 100);
         TyrannosaurusIndividual tyra = new TyrannosaurusIndividual(false, 100);
+        PterodactylusIndividual ptero = new PterodactylusIndividual(false, 100);
+        diplo.setAlliance(Race.Mosasaurus);
+        mosa.setAlliance(Race.Diplodocus);
+        tyra.setAlliance(Race.Pterodactylus);
+        ptero.setAlliance(Race.Tyrannosaurus);
+
 
         Map map = new Map(9,11);
         map.placeObstacle("X", 1, 1);
@@ -55,6 +57,13 @@ public class Main {
 
         Integer safezoneMove[] = map.getDirectionToSafeZone(diplo);
 
+        Random de = new Random();
+        System.out.println(de.rand());
+        System.out.println(de.randRange(100));
+        
+        
+
         //System.out.println("[ " + safezoneMove[0].toString() + ", " + safezoneMove[1].toString() + " ]");
     }
+    
 }
