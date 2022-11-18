@@ -1,14 +1,6 @@
 package Map;
 
 import Individuals.Dinosaur;
-import Individuals.DiplodocusIndividual;
-import Individuals.DiplodocusMaster;
-import Individuals.MosasaurusIndividual;
-import Individuals.MosasaurusMaster;
-import Individuals.PterodactylusIndividual;
-import Individuals.PterodactylusMaster;
-import Individuals.TyrannosaurusIndividual;
-import Individuals.TyrannosaurusMaster;
 
 public class Point {
     
