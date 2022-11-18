@@ -7,7 +7,7 @@ public class DiplodocusMaster extends Diplodocus implements Master {
     
     private DiplodocusMaster(boolean gender, int energyPoints) {
         super(gender, energyPoints,SYMBOL);
-    };
+    }
 
     public static DiplodocusMaster createUnique(boolean genre, int energyPoints) {
         if (lUnique == null) {

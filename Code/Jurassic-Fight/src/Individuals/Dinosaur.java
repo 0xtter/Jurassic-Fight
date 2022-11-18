@@ -2,13 +2,14 @@ package Individuals;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public abstract class Dinosaur extends LivingBeeing {
 
     private int energyPoints;
     private String symbol;
-    private ArrayList<String> receivedMessages = new ArrayList<String>();
+    private ArrayList<String> receivedMessages = new ArrayList<>();
     /**
      * Sét of all messages received and given from
      * other individuals of the same race.
@@ -16,9 +17,9 @@ public abstract class Dinosaur extends LivingBeeing {
      */
     private Set<String> collectedMessages = new HashSet<>(receivedMessages);
 
-    public Dinosaur(boolean gender, int EP,String symbol) {
+    protected Dinosaur(boolean gender, int energyPoints,String symbol) {
         super(gender);
-        this.energyPoints = EP;
+        this.energyPoints = energyPoints;
         this.symbol = symbol;
     }
 
@@ -38,7 +39,7 @@ public abstract class Dinosaur extends LivingBeeing {
         this.energyPoints -= value;
     }
 
-    public ArrayList<String> getReceivedMessages() {
+    public List<String> getReceivedMessages() {
         return this.receivedMessages;
     }
 

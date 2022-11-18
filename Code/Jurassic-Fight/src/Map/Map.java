@@ -1,6 +1,7 @@
 package Map;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import Individuals.Dinosaur;
 import Individuals.Diplodocus;
@@ -168,86 +169,14 @@ public class Map {
      * @param dinausor
      * @param x new X >= 0
      * @param y new Y >= 0
-     * @throws Exception "Can't move a DiplodocusIndividual that is not on the map."
+     * @throws Exception "Can't move a dinausor that is not on the map."
      */
-    public void move(DiplodocusIndividual dinausor, Integer x, Integer y) throws Exception {
+    public void move(Dinosaur dinausor, Integer x, Integer y) throws Exception {
         Point currentPoint = getPoint(dinausor);
         Point nextPoint = getPoint(x, y);
 
         if (currentPoint == null) {
-            throw new Exception("Can't move a MosasaurusIndividual that is not on the map.");
-        }
-        
-        nextPoint.placeDinausor(dinausor);
-        nextPoint.setSymbol(currentPoint.getSymbol());
-
-        currentPoint.free();
-        if (isPointInSafeZone(currentPoint)) {
-            currentPoint.setSymbol("~");
-        }
-    }
-
-    /**
-     * Move a MosasaurusIndividual to another point
-     * @param dinausor
-     * @param x new X >= 0
-     * @param y new Y >= 0
-     * @throws Exception "Can't move a MosasaurusIndividual that is not on the map."
-     */
-    public void move(MosasaurusIndividual dinausor, Integer x, Integer y) throws Exception {
-        Point currentPoint = getPoint(dinausor);
-        Point nextPoint = getPoint(x, y);
-
-        if (currentPoint == null) {
-            throw new Exception("Can't move a MosasaurusIndividual that is not on the map.");
-        }
-        
-        nextPoint.placeDinausor(dinausor);
-        nextPoint.setSymbol(currentPoint.getSymbol());
-
-        currentPoint.free();
-        if (isPointInSafeZone(currentPoint)) {
-            currentPoint.setSymbol("~");
-        }
-    }
-
-    /**
-     * Move a PterodactylusIndividual to another point
-     * @param dinausor
-     * @param x new X >= 0
-     * @param y new Y >= 0
-     * @throws Exception "Can't move a PterodactylusIndividual that is not on the map."
-     */
-    public void move(PterodactylusIndividual dinausor, Integer x, Integer y) throws Exception {
-        Point currentPoint = getPoint(dinausor);
-        Point nextPoint = getPoint(x, y);
-
-        if (currentPoint == null) {
-            throw new Exception("Can't move a PterodactylusIndividual that is not on the map.");
-        }
-        
-        nextPoint.placeDinausor(dinausor);
-        nextPoint.setSymbol(currentPoint.getSymbol());
-
-        currentPoint.free();
-        if (isPointInSafeZone(currentPoint)) {
-            currentPoint.setSymbol("~");
-        }
-    }
-
-    /**
-     * Move a TyrannosaurusIndividual to another point
-     * @param dinausor
-     * @param x new X >= 0
-     * @param y new Y >= 0
-     * @throws Exception "Can't move a TyrannosaurusIndividual that is not on the map."
-     */
-    public void move(TyrannosaurusIndividual dinausor, Integer x, Integer y) throws Exception {
-        Point currentPoint = getPoint(dinausor);
-        Point nextPoint = getPoint(x, y);
-
-        if (currentPoint == null) {
-            throw new Exception("Can't move a TyrannosaurusIndividual that is not on the map.");
+            throw new Exception("Can't move a dinausor that is not on the map.");
         }
         
         nextPoint.placeDinausor(dinausor);
@@ -265,7 +194,7 @@ public class Map {
      * @param y >= 0
      * @return list of coordinates to move to
      */
-    public ArrayList<Integer[]> getAvailableMoves(int x, int y) {
+    public List<Integer[]> getAvailableMoves(int x, int y) {
         ArrayList<Integer[]> moves = new ArrayList<>();
         
         Point currentPoint = getPoint(x, y);    // to be sure that the point exists.
@@ -273,7 +202,7 @@ public class Map {
         Point tmpP = null;
 
         
-        Integer movesAvailable[][] = {
+        Integer[][] movesAvailable = {
             { -1, 2 },
             { 1, 2 },
             { 2, -1 },
@@ -285,7 +214,7 @@ public class Map {
         }; // Movements of a knight (chess) : see https://en.wikipedia.org/wiki/Knight_(chess)#Movement
         
         // search available points next to current point
-        for (Integer currenMove[] : movesAvailable) {
+        for (Integer[] currenMove : movesAvailable) {
             try{
                 tmpP = getPoint(x + currenMove[0], y + currenMove[1]);
                 if (tmpP.isFree() && !tmpP.equals(currentPoint)) { 
@@ -330,11 +259,11 @@ public class Map {
      * @return { x, y }
      */
     public Integer[] findNextMoveToReachPoint(Point actualPoint, Point targetPoint) {
-        Integer nextMove[] = {};
+        Integer[] nextMove = {};
 
         // get moves options
-        ArrayList<Integer[]> possibleMoves = getAvailableMoves(actualPoint.getX(), actualPoint.getY());
-        if (possibleMoves.size() == 0) { return nextMove; }
+        ArrayList<Integer[]> possibleMoves = (ArrayList<Integer[]>) getAvailableMoves(actualPoint.getX(), actualPoint.getY());
+        if (possibleMoves.isEmpty()) { return nextMove; }
 
         // find the closest next point from the first SafeZone Point
 

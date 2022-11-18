@@ -4,7 +4,7 @@ public abstract class Diplodocus extends Dinosaur {
 
     private static Race allianceMadeWith;
 
-    public Diplodocus(boolean gender, int energyPoints,String symbol) {
+    protected Diplodocus(boolean gender, int energyPoints,String symbol) {
         super(gender, energyPoints,symbol);
     }
 

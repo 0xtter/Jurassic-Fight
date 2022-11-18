@@ -1,7 +1,7 @@
 package Individuals;
 
 public interface Interractions {
-    
+
     public void meet(DiplodocusIndividual diplodocusI);
     public void meet(DiplodocusMaster diplodocusM);
     public void meet(PterodactylusIndividual pterodactylusI);
