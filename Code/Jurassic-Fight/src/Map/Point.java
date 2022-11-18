@@ -1,5 +1,6 @@
 package Map;
 
+import Individuals.Dinosaur;
 import Individuals.DiplodocusIndividual;
 import Individuals.DiplodocusMaster;
 import Individuals.MosasaurusIndividual;
@@ -99,115 +100,10 @@ public class Point {
      * @param dinausor
      * @throws Exception if the point is already in use (obstacle or another Dinausor)
      */
-    protected void placeDinausor(DiplodocusIndividual dinausor) throws Exception {
+    protected void placeDinausor(Dinosaur dinausor) throws Exception {
         if (isFree()) {
             this.dinausor = dinausor;
-            this.symbol = "D";
-            this.isAvailable = false;
-        } else {
-            throw new Exception("The point is already in use.");
-        }
-    }
-
-    /**
-     * 
-     * @param dinausor
-     * @throws Exception "The point is already in use." (obstacle or another Dinausor using this point)
-     */
-    protected void placeDinausor(DiplodocusMaster dinausor) throws Exception {
-        if (isFree()) {
-            this.dinausor = dinausor;
-            this.symbol ="#D";
-            this.isAvailable = false;
-        } else {
-            throw new Exception("The point is already in use.");
-        }
-    }
-
-    /**
-     * 
-     * @param dinausor
-     * @throws Exception if the point is already in use (obstacle or another Dinausor)
-     */
-    protected void placeDinausor(MosasaurusIndividual dinausor) throws Exception {
-        if (isFree()) {
-            this.dinausor = dinausor;
-            this.symbol = "M";
-            this.isAvailable = false;
-        } else {
-            throw new Exception("The point is already in use.");
-        }
-    }
-
-    /**
-     * 
-     * @param dinausor
-     * @throws Exception if the point is already in use (obstacle or another Dinausor)
-     */
-    protected void placeDinausor(MosasaurusMaster dinausor) throws Exception {
-        if (isFree()) {
-            this.dinausor = dinausor;
-            this.symbol = "#M";
-            this.isAvailable = false;
-        } else {
-            throw new Exception("The point is already in use.");
-        }
-    }
-
-    /**
-     * 
-     * @param dinausor
-     * @throws Exception if the point is already in use (obstacle or another Dinausor)
-     */
-    protected void placeDinausor(PterodactylusIndividual dinausor) throws Exception {
-        if (isFree()) {
-            this.dinausor = dinausor;
-            this.symbol = "P";
-            this.isAvailable = false;
-        } else {
-            throw new Exception("The point is already in use.");
-        }
-    }
-
-    /**
-     * 
-     * @param dinausor
-     * @throws Exception if the point is already in use (obstacle or another Dinausor)
-     */
-    protected void placeDinausor(PterodactylusMaster dinausor) throws Exception {
-        if (isFree()) {
-            this.dinausor = dinausor;
-            this.symbol = "#P";
-            this.isAvailable = false;
-        } else {
-            throw new Exception("The point is already in use.");
-        }
-    }
-
-    /**
-     * 
-     * @param dinausor
-     * @throws Exception if the point is already in use (obstacle or another Dinausor)
-     */
-    protected void placeDinausor(TyrannosaurusIndividual dinausor) throws Exception {
-        if (isFree()) {
-            this.dinausor = dinausor;
-            this.symbol = "T";
-            this.isAvailable = false;
-        } else {
-            throw new Exception("The point is already in use.");
-        }
-    }
-
-    /**
-     * 
-     * @param dinausor
-     * @throws Exception if the point is already in use (obstacle or another Dinausor)
-     */
-    protected void placeDinausor(TyrannosaurusMaster dinausor) throws Exception {
-        if (isFree()) {
-            this.dinausor = dinausor;
-            this.symbol = "#T";
+            this.symbol = dinausor.getSymbol();
             this.isAvailable = false;
         } else {
             throw new Exception("The point is already in use.");

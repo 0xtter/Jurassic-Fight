@@ -2,8 +2,10 @@ package Individuals;
 
 public class PterodactylusIndividual extends Pterodactylus implements Individual, Interractions {
 
+    private static final String SYMBOL = "P";
+
     public PterodactylusIndividual(boolean gender, int energyPoints) {
-        super(gender, energyPoints);
+        super(gender, energyPoints,SYMBOL);
     }
 
     public void move(int x, int y) {
