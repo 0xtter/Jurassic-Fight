@@ -7,7 +7,7 @@ public class PterodactylusMaster extends Pterodactylus implements Master {
 
     private PterodactylusMaster(boolean gender, int energyPoints) {
         super(gender, energyPoints,SYMBOL);
-    };
+    }
 
     public static PterodactylusMaster createUnique(boolean genre, int energyPoints) {
         if (lUnique == null) {

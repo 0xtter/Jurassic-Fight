@@ -36,29 +36,4 @@ public class MosasaurusIndividual extends Mosasaurus implements Individual, Inte
         // TO-DO
     }
 
-    // public void meet(Dinosaur individual){
-
-    //     //Si on rencontre un dinosaure du même type.
-    //     if (individual instanceof Mosasaurus){
-    //         //Partage tous les messages.
-    //         //System.out.println("this is " + this.getTypeOfDinosaur());
-
-    //         // fonction de partage deja faites par Daniel, voir Dinausor.java
-    //     }
-
-    //     //Sinon
-    //     else{
-
-    //         //Si le dino est notre allié
-    //         if (individual.getAlliance() == Race.Mosasaurus )){
-    //             //Génère un nombre aléatoire et échange.
-    //         }
-
-    //         //Si c'est un ennemi.
-    //         else{
-    //             //Génère un nombre aléatoire et engage le combat.
-    //         }
-    //     }
-    // }
-
 }
