@@ -1,17 +1,17 @@
-package Individuals;
+package individuals;
 
 public class MosasaurusMaster extends Mosasaurus implements Master {
 
     private static final String SYMBOL = "#M";
     private static MosasaurusMaster lUnique;
     
-    private MosasaurusMaster(boolean gender, int energyPoints) {
-        super(gender, energyPoints,SYMBOL);
+    private MosasaurusMaster(int energyPoints) {
+        super(energyPoints,SYMBOL);
     };
 
-    public static MosasaurusMaster createUnique(boolean genre, int energyPoints) {
+    public static MosasaurusMaster createUnique(int energyPoints) {
         if (lUnique == null) {
-            lUnique = new MosasaurusMaster(genre, energyPoints);
+            lUnique = new MosasaurusMaster(energyPoints);
         }
         return lUnique;
     }

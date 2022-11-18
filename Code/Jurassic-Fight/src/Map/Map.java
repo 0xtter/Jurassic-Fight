@@ -1,21 +1,21 @@
-package Map;
+package map;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import Individuals.Dinosaur;
-import Individuals.Diplodocus;
-import Individuals.DiplodocusIndividual;
-import Individuals.DiplodocusMaster;
-import Individuals.Mosasaurus;
-import Individuals.MosasaurusIndividual;
-import Individuals.MosasaurusMaster;
-import Individuals.Pterodactylus;
-import Individuals.PterodactylusIndividual;
-import Individuals.PterodactylusMaster;
-import Individuals.Tyrannosaurus;
-import Individuals.TyrannosaurusIndividual;
-import Individuals.TyrannosaurusMaster;
+import individuals.Dinosaur;
+import individuals.Diplodocus;
+import individuals.DiplodocusIndividual;
+import individuals.DiplodocusMaster;
+import individuals.Mosasaurus;
+import individuals.MosasaurusIndividual;
+import individuals.MosasaurusMaster;
+import individuals.Pterodactylus;
+import individuals.PterodactylusIndividual;
+import individuals.PterodactylusMaster;
+import individuals.Tyrannosaurus;
+import individuals.TyrannosaurusIndividual;
+import individuals.TyrannosaurusMaster;
 
 public class Map {
 
@@ -231,7 +231,7 @@ public class Map {
      * @param y >= 0
      * @return list of coordinates to points where there is a dino next to (x,y)
      */
-    public ArrayList<Point> getDinausorsAround(int x, int y) {
+    public List<Point> getDinausorsAround(int x, int y) {
         ArrayList<Point> dino = new ArrayList<>();
         
         Point currentP = getPoint(x, y);
@@ -288,14 +288,14 @@ public class Map {
      * @throws Exception
      */
     public Integer[] getDirectionToSafeZone(DiplodocusIndividual diplodocus) throws Exception {
-        Integer nextMove[] = {};
+        Integer[] nextMove = {};
 
         // looking for dinausor in map
         Point point = getPoint(diplodocus);
         if (point == null) { return nextMove; }
 
         // Check if point is already in safezone
-        if (this.safezoneDiplo.size() == 0) { 
+        if (this.safezoneDiplo.isEmpty()) { 
             throw new Exception("SafeZoneDiplo was not initialized.");
         }
         else if (this.safezoneDiplo.contains(point)) { return nextMove; }
@@ -321,7 +321,7 @@ public class Map {
         if (point == null) { return nextMove; }
 
         // Check if point is already in safezone
-        if (this.safezoneMosa.size() == 0) { 
+        if (this.safezoneMosa.isEmpty()) { 
             throw new Exception("SafeZoneDiplo was not initialized.");
          }
         else if (this.safezoneMosa.contains(point)) { return nextMove; }

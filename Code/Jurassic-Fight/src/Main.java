@@ -1,18 +1,18 @@
-import java.util.ArrayList;
-
+import java.util.List;
 import org.apache.log4j.Logger;
-import Mechanics.*;
-import Individuals.*;
-import Map.*;
+
+import individuals.*;
+import map.*;
+import mechanics.*;
 
 public class Main {
     
     private static final Logger log = Logger.getLogger(Main.class.getName()); 
     public static void main(String[] args) throws Exception {
-        DiplodocusIndividual diplo = new DiplodocusIndividual(false, 100);
-        MosasaurusIndividual mosa = new MosasaurusIndividual(false, 100);
-        TyrannosaurusIndividual tyra = new TyrannosaurusIndividual(false, 100);
-        PterodactylusIndividual ptero = new PterodactylusIndividual(false, 100);
+        DiplodocusIndividual diplo = new DiplodocusIndividual(100);
+        MosasaurusIndividual mosa = new MosasaurusIndividual(100);
+        TyrannosaurusIndividual tyra = new TyrannosaurusIndividual(100);
+        PterodactylusIndividual ptero = new PterodactylusIndividual(100);
         diplo.setAlliance(Race.Mosasaurus);
         mosa.setAlliance(Race.Diplodocus);
         tyra.setAlliance(Race.Pterodactylus);
@@ -31,7 +31,7 @@ public class Main {
          * Get Dinousors around a point (utile pour savoir détecter un combat)
          */
 
-        ArrayList<Point> dino = map.getDinausorsAround(2, 3);
+        List<Point> dino = map.getDinausorsAround(2, 3);
 
         System.out.println("\nDino next to (2, 3) :");
         for (int c=0; c < dino.size(); c++) {
@@ -43,7 +43,7 @@ public class Main {
          * Get available Points next to a point
          */
         
-        ArrayList<Integer[]> moves = map.getAvailableMoves(0, 1);
+        List<Integer[]> moves = map.getAvailableMoves(0, 1);
 
         System.out.println("Possible next moves from point (0, 1) :");
         for (int c=0; c < moves.size(); c++) {

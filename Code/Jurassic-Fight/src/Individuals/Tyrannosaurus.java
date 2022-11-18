@@ -1,11 +1,11 @@
-package Individuals;
+package individuals;
 
 public abstract class Tyrannosaurus extends Dinosaur {
 
     private static Race allianceMadeWith;
 
-    protected Tyrannosaurus(boolean gender, int energyPoints,String symbol) {
-        super(gender, energyPoints,symbol);
+    protected Tyrannosaurus(int energyPoints,String symbol) {
+        super(energyPoints,symbol);
     }
 
     public static Race getAlliance() {

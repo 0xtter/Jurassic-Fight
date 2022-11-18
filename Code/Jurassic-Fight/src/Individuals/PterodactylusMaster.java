@@ -1,17 +1,17 @@
-package Individuals;
+package individuals;
 
 public class PterodactylusMaster extends Pterodactylus implements Master {
 
     private static final String SYMBOL = "#P";
     private static PterodactylusMaster lUnique;
 
-    private PterodactylusMaster(boolean gender, int energyPoints) {
-        super(gender, energyPoints,SYMBOL);
+    private PterodactylusMaster(int energyPoints) {
+        super(energyPoints,SYMBOL);
     }
 
-    public static PterodactylusMaster createUnique(boolean genre, int energyPoints) {
+    public static PterodactylusMaster createUnique(int energyPoints) {
         if (lUnique == null) {
-            lUnique = new PterodactylusMaster(genre, energyPoints);
+            lUnique = new PterodactylusMaster(energyPoints);
         }
         return lUnique;
     }

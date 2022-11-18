@@ -1,4 +1,4 @@
-package Individuals;
+package individuals;
 
 public enum Race {
     Diplodocus, 

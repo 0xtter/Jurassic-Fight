@@ -1,4 +1,4 @@
-package Individuals;
+package individuals;
 
 public class TyrannosaurusMaster extends Tyrannosaurus implements Master {
 
@@ -6,13 +6,13 @@ public class TyrannosaurusMaster extends Tyrannosaurus implements Master {
 
     private static TyrannosaurusMaster lUnique;
     
-    private TyrannosaurusMaster(boolean gender, int energyPoints) {
-        super(gender, energyPoints,SYMBOL);
-    };
+    private TyrannosaurusMaster(int energyPoints) {
+        super(energyPoints,SYMBOL);
+    }
 
-    public static TyrannosaurusMaster createUnique(boolean genre, int energyPoints) {
+    public static TyrannosaurusMaster createUnique(int energyPoints) {
         if (lUnique == null) {
-            lUnique = new TyrannosaurusMaster(genre, energyPoints);
+            lUnique = new TyrannosaurusMaster(energyPoints);
         }
         return lUnique;
     }

@@ -1,11 +1,11 @@
-package Individuals;
+package individuals;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public abstract class Dinosaur extends LivingBeeing {
+public abstract class Dinosaur{
 
     private int energyPoints;
     private String symbol;
@@ -17,8 +17,7 @@ public abstract class Dinosaur extends LivingBeeing {
      */
     private Set<String> collectedMessages = new HashSet<>(receivedMessages);
 
-    protected Dinosaur(boolean gender, int energyPoints,String symbol) {
-        super(gender);
+    protected Dinosaur(int energyPoints,String symbol) {
         this.energyPoints = energyPoints;
         this.symbol = symbol;
     }

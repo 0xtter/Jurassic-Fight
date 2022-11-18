@@ -1,11 +1,11 @@
-package Individuals;
+package individuals;
 
 public abstract class Diplodocus extends Dinosaur {
 
     private static Race allianceMadeWith;
 
-    protected Diplodocus(boolean gender, int energyPoints,String symbol) {
-        super(gender, energyPoints,symbol);
+    protected Diplodocus(int energyPoints,String symbol) {
+        super(energyPoints,symbol);
     }
 
     public static Race getAlliance() {

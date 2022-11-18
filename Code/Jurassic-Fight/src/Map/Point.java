@@ -1,6 +1,6 @@
-package Map;
+package map;
 
-import Individuals.Dinosaur;
+import individuals.Dinosaur;
 
 public class Point {
     
@@ -69,15 +69,7 @@ public class Point {
     }
 
     public boolean isFree() {
-        if (this.isObstacle.equals(true)) {
-            // System.out.println("Can't place a dinausor an on obstacle.");
-            return false;
-        }
-        if (this.isAvailable.equals(false)) {
-            // System.out.println("There is already a dinosaur on this point.");
-            return false;
-        }
-        return true;
+        return !(Boolean.TRUE.equals(this.isObstacle) || Boolean.FALSE.equals(this.isAvailable));
     }
 
     public void placeObstacle(String symbol) {
@@ -103,13 +95,13 @@ public class Point {
     }
 
     /**
-     * Compute distance with another Point Q
-     * @param Q
+     * Compute distance with another Point point
+     * @param point
      * @return distance
      */
-    public int dist(Point Q) {
-        int xQ = Q.getX().intValue();
-        int yQ = Q.getY().intValue();
+    public int dist(Point point) {
+        int xQ = point.getX().intValue();
+        int yQ = point.getY().intValue();
         int x = this.xCoord.intValue();
         int y = this.yCoord.intValue();
 

@@ -1,4 +1,4 @@
-package Mechanics;
+package mechanics;
 //      Linear congruent generator program.
 //      seed1 = (seed0 * multiplicator + increment ) % modulus
 
