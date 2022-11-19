@@ -153,15 +153,92 @@ public class Map {
     }
 
     /**
-     * Place a Dinosaur on the map
+     * Place a DiplodocusIndividual on the map
      * @param dinausor
      * @param x
      * @param y
      * @throws Exception
      */
-    public void place(Dinosaur dinausor, Integer x, Integer y) throws Exception {
+    public void place(DiplodocusIndividual dinausor, Integer x, Integer y) throws Exception {
         getPoint(x, y).placeDinausor(dinausor);
-    }    
+    }
+
+    /**
+     * Place a DiplodocusMaster on the map
+     * @param dinausor
+     * @param x
+     * @param y
+     * @throws Exception
+     */
+    public void place(DiplodocusMaster dinausor, Integer x, Integer y) throws Exception {
+        getPoint(x, y).placeDinausor(dinausor);
+    }
+
+    /**
+     * Place a MosasaurusIndividual on the map
+     * @param dinausor
+     * @param x
+     * @param y
+     * @throws Exception
+     */
+    public void place(MosasaurusIndividual dinausor, Integer x, Integer y) throws Exception {
+        getPoint(x, y).placeDinausor(dinausor);
+    }
+
+    /**
+     * Place a MosasaurusMaster on the map
+     * @param dinausor
+     * @param x
+     * @param y
+     * @throws Exception
+     */
+    public void place(MosasaurusMaster dinausor, Integer x, Integer y) throws Exception {
+        getPoint(x, y).placeDinausor(dinausor);
+    }
+
+    /**
+     * Place a PterodactylusIndividual on the map
+     * @param dinausor
+     * @param x
+     * @param y
+     * @throws Exception
+     */
+    public void place(PterodactylusIndividual dinausor, Integer x, Integer y) throws Exception {
+        getPoint(x, y).placeDinausor(dinausor);
+    }
+
+    /**
+     * Place a PterodactylusMaster on the map
+     * @param dinausor
+     * @param x
+     * @param y
+     * @throws Exception
+     */
+    public void place(PterodactylusMaster dinausor, Integer x, Integer y) throws Exception {
+        getPoint(x, y).placeDinausor(dinausor);
+    }
+
+    /**
+     * Place a TyrannosaurusIndividual on the map
+     * @param dinausor
+     * @param x
+     * @param y
+     * @throws Exception
+     */
+    public void place(TyrannosaurusIndividual dinausor, Integer x, Integer y) throws Exception {
+        getPoint(x, y).placeDinausor(dinausor);
+    }
+
+    /**
+     * Place a TyrannosaurusMaster on the map
+     * @param dinausor
+     * @param x
+     * @param y
+     * @throws Exception
+     */
+    public void place(TyrannosaurusMaster dinausor, Integer x, Integer y) throws Exception {
+        getPoint(x, y).placeDinausor(dinausor);
+    }
 
     /**
      * Move a DiplodocusIndividual to another point
