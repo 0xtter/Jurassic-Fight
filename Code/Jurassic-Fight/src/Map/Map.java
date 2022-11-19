@@ -83,14 +83,33 @@ public class Map {
             for (int yi=0; yi<side; yi++) {
                 this.safezonePtero.add(getPoint(xi, yi));
                 getPoint(xi, yi).setSymbol("~");
-                this.safezoneDiplo.add(getPoint(xi,this.nbC-1-yi));
-                getPoint(xi, this.nbC-1-yi).setSymbol("~");
-                this.safezoneMosa.add(getPoint(this.nbL-1-xi,yi));
-                getPoint(this.nbL-1-xi, yi).setSymbol("~");
-                this.safezoneTyra.add(getPoint(this.nbL-1-xi,this.nbC-1-yi));
-                getPoint(this.nbL-1-xi, this.nbC-1-yi).setSymbol("~");
             }
         }
+        
+        // right top corner / DIPLO Dino
+        for (int xi=0; xi<side; xi++) {
+            for (int yi=this.nbC-side; yi<this.nbC; yi++) {
+                this.safezoneDiplo.add(getPoint(xi, yi));
+                getPoint(xi, yi).setSymbol("~");
+            }
+        }
+
+        // left bottom corner / MOSA Dino
+        for (int xi=this.nbL-side; xi<this.nbL; xi++) {
+            for (int yi=0; yi<side; yi++) {
+                this.safezoneMosa.add(getPoint(xi, yi));
+                getPoint(xi, yi).setSymbol("~");
+            }
+        }
+
+        // right bottom corner / TYRA Dino
+        for (int xi=this.nbL-side; xi<this.nbL; xi++) {
+            for (int yi=this.nbC-side; yi<this.nbC; yi++) {
+                this.safezoneTyra.add(getPoint(xi, yi));
+                getPoint(xi, yi).setSymbol("~");
+            }
+        }
+        
     }
 
     /**
@@ -98,7 +117,7 @@ public class Map {
      * @return { n, m }
      */
     public Integer[] getShape() {
-        Integer[]  shape = { this.nbL, this.nbL };
+        Integer shape[] = { this.nbL, this.nbL };
         return shape;
     }
 
