@@ -2,10 +2,8 @@ package Individuals;
 
 public class TyrannosaurusIndividual extends Tyrannosaurus implements Individual, Interractions {
 
-    private static final String SYMBOL = "T";
-
     public TyrannosaurusIndividual(boolean gender, int energyPoints) {
-        super(gender, energyPoints,SYMBOL);
+        super(gender, energyPoints);
     }
 
     public void move(int x, int y) {

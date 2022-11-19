@@ -2,10 +2,8 @@ package Individuals;
 
 public class DiplodocusIndividual extends Diplodocus implements Individual, Interractions {
 
-    private static final String SYMBOL = "D";
-
-    public DiplodocusIndividual(boolean gender, int energyPoints ) {
-        super(gender, energyPoints,SYMBOL);
+    public DiplodocusIndividual(boolean gender, int energyPoints) {
+        super(gender, energyPoints);
     }
 
     public void move(int x, int y) {

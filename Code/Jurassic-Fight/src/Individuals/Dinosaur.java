@@ -7,7 +7,6 @@ import java.util.Set;
 public abstract class Dinosaur extends LivingBeeing {
 
     private int energyPoints;
-    private String symbol;
     private ArrayList<String> receivedMessages = new ArrayList<String>();
     /**
      * Sét of all messages received and given from
@@ -16,18 +15,13 @@ public abstract class Dinosaur extends LivingBeeing {
      */
     private Set<String> collectedMessages = new HashSet<>(receivedMessages);
 
-    public Dinosaur(boolean gender, int EP,String symbol) {
+    public Dinosaur(boolean gender, int EP) {
         super(gender);
         this.energyPoints = EP;
-        this.symbol = symbol;
     }
 
     public int getEnergyPoints() {
         return this.energyPoints;
-    }
-
-    public String getSymbol(){
-        return this.symbol;
     }
 
     public void increaseEP(int value) {

@@ -4,8 +4,8 @@ public abstract class Tyrannosaurus extends Dinosaur {
 
     private static Race allianceMadeWith;
 
-    public Tyrannosaurus(boolean gender, int energyPoints,String symbol) {
-        super(gender, energyPoints,symbol);
+    public Tyrannosaurus(boolean gender, int energyPoints) {
+        super(gender, energyPoints);
     }
 
     public static Race getAlliance() {

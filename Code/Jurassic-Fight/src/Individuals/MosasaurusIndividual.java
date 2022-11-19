@@ -2,10 +2,8 @@ package Individuals;
 
 public class MosasaurusIndividual extends Mosasaurus implements Individual, Interractions {
 
-    private static final String SYMBOL = "M";
-
     public MosasaurusIndividual(boolean gender, int energyPoints) {
-        super(gender, energyPoints,SYMBOL);
+        super(gender, energyPoints);
     }
 
     public void move(int x, int y) {

@@ -4,8 +4,8 @@ public abstract class Pterodactylus extends Dinosaur {
 
     private static Race allianceMadeWith;
 
-    public Pterodactylus(boolean gender, int energyPoints,String symbol) {
-        super(gender, energyPoints,symbol);
+    public Pterodactylus(boolean gender, int energyPoints) {
+        super(gender, energyPoints);
     }
 
     public static Race getAlliance() {
