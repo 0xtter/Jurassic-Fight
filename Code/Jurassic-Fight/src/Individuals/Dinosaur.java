@@ -11,7 +11,7 @@ public abstract class Dinosaur{
     private String symbol;
     private ArrayList<String> receivedMessages = new ArrayList<>();
     /**
-     * Sét of all messages received and given from
+     * Set of all messages received and given from
      * other individuals of the same race.
      * No duplicates.
      */

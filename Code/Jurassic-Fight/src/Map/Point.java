@@ -80,7 +80,6 @@ public class Point {
     }
 
     /**
-     * 
      * @param dinausor
      * @throws Exception if the point is already in use (obstacle or another Dinausor)
      */

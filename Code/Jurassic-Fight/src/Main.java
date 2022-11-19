@@ -55,15 +55,13 @@ public class Main {
          * get direction to safezone
          */
 
-        Integer safezoneMove[] = map.getDirectionToSafeZone(diplo);
+        Integer[] safezoneMove = map.getDirectionToSafeZone(diplo);
+        map.move(diplo,safezoneMove[0],safezoneMove[1]);        
+        map.display();
 
         Random de = new Random();
         System.out.println(de.rand());
         System.out.println(de.randRange(100));
-        
-        
-
-        //System.out.println("[ " + safezoneMove[0].toString() + ", " + safezoneMove[1].toString() + " ]");
     }
     
 }
