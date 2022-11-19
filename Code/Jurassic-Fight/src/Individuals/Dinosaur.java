@@ -9,9 +9,7 @@ public abstract class Dinosaur extends LivingBeeing {
 
     private int energyPoints;
     
-    public static int maxKnowledge = 10;
-    public static int minEnergyBeforeTired = 30;
-    public static int maxEnergyAfterRest = 80;
+
     /**
      * Set of all messages received and given from
      * other individuals of the same race.
