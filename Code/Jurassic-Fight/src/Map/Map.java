@@ -449,7 +449,7 @@ public class Map {
 
         // Check if point is already in safezone
         if (this.safezoneMosa.size() == 0) { 
-            throw new Exception("SafeZoneDiplo was not initialized.");
+            throw new Exception("SafeZoneMosa was not initialized.");
          }
         else if (this.safezoneMosa.contains(point)) { return nextMove; }
 
@@ -475,7 +475,7 @@ public class Map {
 
         // Check if point is already in safezone
         if (this.safezonePtero.size() == 0) { 
-            throw new Exception("SafeZoneDiplo was not initialized.");
+            throw new Exception("SafeZonePtero was not initialized.");
          }
         else if (this.safezonePtero.contains(point)) { return nextMove; }
 
@@ -501,7 +501,7 @@ public class Map {
 
         // Check if point is already in safezone
         if (this.safezoneTyra.size() == 0) { 
-            throw new Exception("SafeZoneDiplo was not initialized.");
+            throw new Exception("SafeZoneTyra was not initialized.");
         }
         else if (this.safezoneTyra.contains(point)) { return nextMove; }
 
