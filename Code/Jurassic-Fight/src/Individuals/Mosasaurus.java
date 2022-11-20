@@ -4,7 +4,7 @@ import Map.Map;
 
 public abstract class Mosasaurus extends Dinosaur {
 
-    private static Race allianceMadeWith;
+    private static Race allianceMadeWith = Race.Diplodocus;
 
     public Mosasaurus(boolean gender, int energyPoints, Map map) {
         super(gender, energyPoints,map);

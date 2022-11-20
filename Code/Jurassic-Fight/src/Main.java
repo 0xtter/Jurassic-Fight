@@ -2,8 +2,10 @@ import java.util.ArrayList;
 
 import org.apache.log4j.Logger;
 
+import Individuals.Dinosaur;
 import Individuals.DiplodocusIndividual;
 import Individuals.MosasaurusIndividual;
+import Individuals.PterodactylusIndividual;
 import Individuals.Tyrannosaurus;
 import Individuals.TyrannosaurusIndividual;
 import Map.Map;
@@ -16,8 +18,8 @@ public class Main {
 
         final int maxSteps = 10000;
         
-        Integer nbLines = Forms.askForInteger(5, 20, "Saisir le nombre de la lignes de la carte (min 5, max 20)");
-        Integer nbCol = Forms.askForInteger(5, 20, "Saisir le nombre de la colonnes de la carte (min 5, max 20)");
+        Integer nbLines = Forms.askForInteger(5, 30, "Saisir le nombre de la lignes de la carte (min 5, max 30)");
+        Integer nbCol = Forms.askForInteger(5, 30, "Saisir le nombre de la colonnes de la carte (min 5, max 30)");
 
         Map map = new Map(nbLines, nbCol);
         map.populate();

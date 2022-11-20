@@ -8,6 +8,7 @@ import Map.Map;
 public abstract class Dinosaur extends LivingBeeing {
 
     private int energyPoints;
+    
     /**
      * Set of all messages received and given from
      * other individuals of the same race.

@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="mDnw7Htjd1Qb52j_kryU" name="Page-1">
-        <mxGraphModel dx="2557" dy="537" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
+        <mxGraphModel dx="2671" dy="717" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -331,7 +331,7 @@
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="141" value="DiplodocusIndividual" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
-                    <mxGeometry x="120" y="1052" width="160" height="60" as="geometry"/>
+                    <mxGeometry x="120" y="1063" width="160" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="143" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="141" vertex="1">
                     <mxGeometry y="26" width="160" height="8" as="geometry"/>
@@ -349,7 +349,7 @@
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="145" value="DiplodocusMaster" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
-                    <mxGeometry x="120" y="1195" width="220" height="130" as="geometry">
+                    <mxGeometry x="120" y="1200" width="220" height="130" as="geometry">
                         <mxRectangle x="64" y="1200" width="140" height="26" as="alternateBounds"/>
                     </mxGeometry>
                 </mxCell>
@@ -450,15 +450,15 @@
                 <mxCell id="196" value="+ method(type): type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="193" vertex="1">
                     <mxGeometry y="138" width="160" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="238" value="«interface»&#10;Individual" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=46;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
-                    <mxGeometry x="-800" y="1054" width="200" height="120" as="geometry">
+                <mxCell id="238" value="«interface»&#10;Individual" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=46;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
+                    <mxGeometry x="-827" y="970" width="200" height="120" as="geometry">
                         <mxRectangle x="-280" y="902" width="120" height="26" as="alternateBounds"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="240" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="238">
+                <mxCell id="240" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="238" vertex="1">
                     <mxGeometry y="46" width="200" height="8" as="geometry"/>
                 </mxCell>
-                <mxCell id="241" value="+ move(int x, int y) : void&#10;+ meet(Individual otherIndividual) :&#10; void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="238">
+                <mxCell id="241" value="+ move(int x, int y) : void&#10;+ meet(Individual otherIndividual) :&#10; void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="238" vertex="1">
                     <mxGeometry y="54" width="200" height="66" as="geometry"/>
                 </mxCell>
             </root>
