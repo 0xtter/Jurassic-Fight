@@ -1,8 +1,11 @@
 package Map;
 
 import java.util.concurrent.ThreadLocalRandom;
-
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 import Individuals.Dinosaur;
 import Individuals.Diplodocus;
@@ -114,12 +117,20 @@ public class Map {
         
     }
 
+    /**
+     * Fill the safezone with dinausor and their master.
+     * Give an initial knowledge to all dinausor except masters
+     * 
+     * @throws Exception
+     */
     public void populate() throws Exception {
         // PTERO
         PterodactylusMaster pteroMaster = PterodactylusMaster.createUnique(false, 100, this);
         this.safezonePtero.get(0).placeDinausor(pteroMaster);
         for (int i=1; i<this.safezonePtero.size(); i++) {
             PterodactylusIndividual dino = new PterodactylusIndividual(false, 100, this);
+            Set<String> initKnowledge = new HashSet<>(Arrays.asList( String.format("p%d", i) ));
+            dino.collectMessages(initKnowledge);
             this.safezonePtero.get(i).placeDinausor(dino);
             this.safezonePtero.get(i).setSymbol(String.format("T%d", i));
         }
@@ -129,6 +140,8 @@ public class Map {
         this.safezoneDiplo.get(0).placeDinausor(diploMaster);
         for (int i=1; i<this.safezoneDiplo.size(); i++) {
             DiplodocusIndividual dino = new DiplodocusIndividual(false, 100, this);
+            Set<String> initKnowledge = new HashSet<>(Arrays.asList( String.format("d%d", i) ));
+            dino.collectMessages(initKnowledge);
             this.safezoneDiplo.get(i).placeDinausor(dino);
             this.safezoneDiplo.get(i).setSymbol(String.format("D%d", i));
         }
@@ -138,6 +151,8 @@ public class Map {
         this.safezoneMosa.get(0).placeDinausor(mosaMaster);
         for (int i=1; i<this.safezoneMosa.size(); i++) {
             MosasaurusIndividual dino = new MosasaurusIndividual(false, 100, this);
+            Set<String> initKnowledge = new HashSet<>(Arrays.asList( String.format("m%d", i) ));
+            dino.collectMessages(initKnowledge);
             this.safezoneMosa.get(i).placeDinausor(dino);
             this.safezoneMosa.get(i).setSymbol(String.format("M%d", i));
         }
@@ -147,6 +162,8 @@ public class Map {
         this.safezoneTyra.get(0).placeDinausor(tyraMaster);
         for (int i=1; i<this.safezoneTyra.size(); i++) {
             TyrannosaurusIndividual dino = new TyrannosaurusIndividual(false, 100, this);
+            Set<String> initKnowledge = new HashSet<>(Arrays.asList( String.format("t%d", i) ));
+            dino.collectMessages(initKnowledge);
             this.safezoneTyra.get(i).placeDinausor(dino);
             this.safezoneTyra.get(i).setSymbol(String.format("T%d", i));
         }
@@ -190,10 +207,10 @@ public class Map {
     /**
      * Localise a dinausor (individual or master) on the map.
      * The function returns a point with all the info relative
-     * to this position. Please check Point.java.
+     * to this position. Please check Point.java
      * 
-     * @param dinausor
-     * @return object OR null if not found.
+     * @param dinausor 
+     * @return object OR null if not found
      * @throws "Bad parameter, argument must be an individual or a master."
      */
     public Point getPoint(Object dinausor)  throws Exception {
