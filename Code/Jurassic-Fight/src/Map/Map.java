@@ -427,8 +427,8 @@ public class Map {
         }
         else if (this.safezoneDiplo.contains(point)) { return nextMove; }
 
-        // set as reference the first point of SafeZone
-        Point safezonePoint = this.safezoneDiplo.get(0);
+        // set as reference the rigth top corner of the map (see initSafeZones method)
+        Point safezonePoint = this.getPoint(0, this.nbC-1);
         nextMove = findNextMoveToReachPoint(point, safezonePoint);
 
         return nextMove;
@@ -453,8 +453,8 @@ public class Map {
          }
         else if (this.safezoneMosa.contains(point)) { return nextMove; }
 
-        // set as reference the first point of SafeZone
-        Point safezonePoint = this.safezoneMosa.get(0);
+        // set as reference the left bottom corner of the map (see initSafeZones method)
+        Point safezonePoint = this.getPoint(this.nbL-1, 0);
         nextMove = findNextMoveToReachPoint(point, safezonePoint);
 
         return nextMove;
@@ -479,8 +479,8 @@ public class Map {
          }
         else if (this.safezonePtero.contains(point)) { return nextMove; }
 
-        // set as reference the first point of SafeZone
-        Point safezonePoint = this.safezonePtero.get(0);
+        // set as reference the left top corner of the map (see initSafeZones method)
+        Point safezonePoint = this.getPoint(0, 0);
         nextMove = findNextMoveToReachPoint(point, safezonePoint);
 
         return nextMove;
@@ -505,8 +505,8 @@ public class Map {
         }
         else if (this.safezoneTyra.contains(point)) { return nextMove; }
 
-        // set as reference the first point of SafeZone
-        Point safezonePoint = this.safezoneTyra.get(0);
+        // set as reference the left top corner of the map (see initSafeZones method)
+        Point safezonePoint = this.getPoint(this.nbL-1, this.nbC-1);
         nextMove = findNextMoveToReachPoint(point, safezonePoint);
 
         return nextMove;
