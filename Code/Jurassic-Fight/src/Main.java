@@ -38,7 +38,7 @@ public class Main {
         map.display();
 
         // safezones have the same size & masters don't have init knowledge
-        final int TOTAL_NB_OF_MSG = 4 * (map.getDiploSafeSone().size() - 1);
+        final int TOTAL_NB_OF_MSG = 4 * ((int)Math.floor(map.getDiploSafeSone().size() / 2) - 1);
 
         int step = 0;
         boolean pauseAtEndOfStep = true;
