@@ -124,48 +124,70 @@ public class Map {
      * @throws Exception
      */
     public void populate() throws Exception {
+        
         // PTERO
-        PterodactylusMaster pteroMaster = PterodactylusMaster.createUnique(false, 100, this);
-        this.safezonePtero.get(0).placeDinausor(pteroMaster);
-        for (int i=1; i<this.safezonePtero.size(); i++) {
-            PterodactylusIndividual dino = new PterodactylusIndividual(false, 100, this);
-            Set<String> initKnowledge = new HashSet<>(Arrays.asList( String.format("p%d", i) ));
-            dino.collectMessages(initKnowledge);
-            this.safezonePtero.get(i).placeDinausor(dino);
-            this.safezonePtero.get(i).setSymbol(String.format("P%d", i));
+        for (int i=0; i<this.safezonePtero.size(); i++) {
+            Point tmpP = this.safezonePtero.get(i);
+            if (tmpP.getX().equals(0) && tmpP.getY().equals(0)) {
+                // place master
+                PterodactylusMaster pteroMaster = PterodactylusMaster.createUnique(false, 100, this);
+                this.safezonePtero.get(i).placeDinausor(pteroMaster);
+            } else {
+                //Place individuals
+                PterodactylusIndividual dino = new PterodactylusIndividual(false, 100, this);
+                Set<String> initKnowledge = new HashSet<>(Arrays.asList( String.format("p%d", i) ));
+                dino.collectMessages(initKnowledge);
+                this.safezonePtero.get(i).placeDinausor(dino);
+                this.safezonePtero.get(i).setSymbol(String.format("P%d", i));
+            }
         }
 
         // DIPLO
-        DiplodocusMaster diploMaster = DiplodocusMaster.createUnique(false, 100, this);
-        this.safezoneDiplo.get(0).placeDinausor(diploMaster);
-        for (int i=1; i<this.safezoneDiplo.size(); i++) {
-            DiplodocusIndividual dino = new DiplodocusIndividual(false, 100, this);
-            Set<String> initKnowledge = new HashSet<>(Arrays.asList( String.format("d%d", i) ));
-            dino.collectMessages(initKnowledge);
-            this.safezoneDiplo.get(i).placeDinausor(dino);
-            this.safezoneDiplo.get(i).setSymbol(String.format("D%d", i));
+        for (int i=0; i<this.safezoneDiplo.size(); i++) {
+            Point tmpP = this.safezoneDiplo.get(i);
+            if (tmpP.getX().equals(0) && tmpP.getY().equals(this.nbL-1)) {
+                // place master
+                DiplodocusMaster diploMaster = DiplodocusMaster.createUnique(false, 100, this);
+                this.safezoneDiplo.get(i).placeDinausor(diploMaster);
+            } else {
+                DiplodocusIndividual dino = new DiplodocusIndividual(false, 100, this);
+                Set<String> initKnowledge = new HashSet<>(Arrays.asList( String.format("d%d", i) ));
+                dino.collectMessages(initKnowledge);
+                this.safezoneDiplo.get(i).placeDinausor(dino);
+                this.safezoneDiplo.get(i).setSymbol(String.format("D%d", i));
+            }
         }
 
         // MOSA
-        MosasaurusMaster mosaMaster = MosasaurusMaster.createUnique(false, 100, this);
-        this.safezoneMosa.get(0).placeDinausor(mosaMaster);
-        for (int i=1; i<this.safezoneMosa.size(); i++) {
-            MosasaurusIndividual dino = new MosasaurusIndividual(false, 100, this);
-            Set<String> initKnowledge = new HashSet<>(Arrays.asList( String.format("m%d", i) ));
-            dino.collectMessages(initKnowledge);
-            this.safezoneMosa.get(i).placeDinausor(dino);
-            this.safezoneMosa.get(i).setSymbol(String.format("M%d", i));
+        for (int i=0; i<this.safezoneMosa.size(); i++) {
+            Point tmpP = this.safezoneMosa.get(i);
+            if (tmpP.getX().equals(this.nbL-1) && tmpP.getY().equals(0)) {
+                // place master
+                MosasaurusMaster mosaMaster = MosasaurusMaster.createUnique(false, 100, this);
+                this.safezoneMosa.get(i).placeDinausor(mosaMaster);
+            } else {
+                MosasaurusIndividual dino = new MosasaurusIndividual(false, 100, this);
+                Set<String> initKnowledge = new HashSet<>(Arrays.asList( String.format("m%d", i) ));
+                dino.collectMessages(initKnowledge);
+                this.safezoneMosa.get(i).placeDinausor(dino);
+                this.safezoneMosa.get(i).setSymbol(String.format("M%d", i));
+            }
         }
 
         // TYRA
-        TyrannosaurusMaster tyraMaster = TyrannosaurusMaster.createUnique(false, 100, this);
-        this.safezoneTyra.get(0).placeDinausor(tyraMaster);
-        for (int i=1; i<this.safezoneTyra.size(); i++) {
-            TyrannosaurusIndividual dino = new TyrannosaurusIndividual(false, 100, this);
-            Set<String> initKnowledge = new HashSet<>(Arrays.asList( String.format("t%d", i) ));
-            dino.collectMessages(initKnowledge);
-            this.safezoneTyra.get(i).placeDinausor(dino);
-            this.safezoneTyra.get(i).setSymbol(String.format("T%d", i));
+        for (int i=0; i<this.safezoneTyra.size(); i++) {
+            Point tmpP = this.safezoneTyra.get(i);
+            if (tmpP.getX().equals(this.nbL-1) && tmpP.getY().equals(this.nbC-1)) {
+                // place master
+                TyrannosaurusMaster tyraMaster = TyrannosaurusMaster.createUnique(false, 100, this);
+                this.safezoneTyra.get(i).placeDinausor(tyraMaster);
+            } else {
+                TyrannosaurusIndividual dino = new TyrannosaurusIndividual(false, 100, this);
+                Set<String> initKnowledge = new HashSet<>(Arrays.asList( String.format("t%d", i) ));
+                dino.collectMessages(initKnowledge);
+                this.safezoneTyra.get(i).placeDinausor(dino);
+                this.safezoneTyra.get(i).setSymbol(String.format("T%d", i));
+            }
         }
     }
 
