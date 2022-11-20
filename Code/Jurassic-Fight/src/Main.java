@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 import org.apache.log4j.Logger;
 
 import Individuals.Dinosaur;
@@ -41,16 +43,20 @@ public class Main {
         int step = 0;
         boolean pauseAtEndOfStep = true;
         String input = "";
+        ArrayList<Dinosaur> dinoSeen = new ArrayList<Dinosaur>();
 
         while (step<MAX_STEPS && !isGameOver) {
 
             // Begin of step
             String statestr = "";
 
+
             for(int x = 0;x<map.getShape()[0];x++){
                 for(int y = 0;y<map.getShape()[1];y++){
-
                     Dinosaur dino = map.getPoint(x, y).getDinausor();
+                    
+                    if(dinoSeen.contains(dino))continue;
+                    dinoSeen.add(dino);
 
                     // If there is a Dinausor on this point, do one move and 
                     // act according to the situation (figth, share knowledge, etc...)
@@ -93,7 +99,7 @@ public class Main {
 
                         }
                     }catch(Exception e){
-                        System.err.println("Error stepping dino");
+                        System.err.println("Error stepping dino 1");
                     }
                 }
             }
@@ -139,6 +145,7 @@ public class Main {
                 pauseAtEndOfStep = input.equals("finir") ? false : true;
             }
             step++;
+            dinoSeen.removeAll(dinoSeen);
         }
     }
 }

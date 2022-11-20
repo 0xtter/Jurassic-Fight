@@ -1,11 +1,6 @@
 package Individuals;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
-
-import javax.sound.midi.Soundbank;
-
 import Mechanics.Random;
 import Map.Point;
 

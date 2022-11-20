@@ -194,7 +194,7 @@ public class Map {
     public void generateObstacles() {
         // on selectionne arbitrairement 1 dixieme de la map pour etre
         // des obstacles
-        int nbObst = (int) Math.floor((this.nbC * this.nbL) / 10);
+        int nbObst = (int) Math.floor((this.nbC * this.nbL) / 100);
         int count = 0;
         while (count < nbObst) {
             int yRand = ThreadLocalRandom.current().nextInt(0, this.nbC);
@@ -369,23 +369,33 @@ public class Map {
 
         
         Integer movesAvailable[][] = {
-            { -1, 2 },
-            { 1, 2 },
-            { 2, -1 },
-            { 2, 1 },
-            { 1, -2 },
-            { -1, -2 },
-            { -2, -1 },
-            { -2, 1 }
+            { 1, 0 },
+            { 1, 1 },
+            { 0, 1 },
+            { -1, 1 },
+            {-1, 0 },
+            { -1, -1 },
+            { 0, -1 },
+            { 1, -1 }
         }; // Movements of a knight (chess) : see https://en.wikipedia.org/wiki/Knight_(chess)#Movement
+        // Integer movesAvailable[][] = {
+        //     { -1, 2 },
+        //     { 1, 2 },
+        //     { 2, -1 },
+        //     { 2, 1 },
+        //     { 1, -2 },
+        //     { -1, -2 },
+        //     { -2, -1 },
+        //     { -2, 1 }
+        // }; // Movements of a knight (chess) : see https://en.wikipedia.org/wiki/Knight_(chess)#Movement
         
         // search available points next to current point
         for (Integer currenMove[] : movesAvailable) {
             try{
                 tmpP = getPoint(x + currenMove[0], y + currenMove[1]);
-                if (tmpP.isFree() && !tmpP.equals(currentPoint)) { 
-                    moves.add(tmpP.getCoord());
-                };
+                moves.add(tmpP.getCoord());
+                // if (tmpP.isFree() && !tmpP.equals(currentPoint)) { 
+                // };
             } catch (Exception e) {}
         }
         return moves;

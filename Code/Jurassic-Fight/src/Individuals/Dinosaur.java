@@ -88,7 +88,6 @@ public abstract class Dinosaur extends LivingBeeing {
     }
 
     public static void meet(Dinosaur that, Dinosaur other) throws Exception {
-        
         //If encounter a dinosaur in the same alliance.
         if (that.getAllianceMadeWith().equals(other.getAllianceMadeWith())){
             if(that.getClass() == other.getClass()){//Same dino class
