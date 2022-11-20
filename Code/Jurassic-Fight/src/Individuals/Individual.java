@@ -1,6 +1,5 @@
 package Individuals;
 
-import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import Mechanics.Random;
 import Map.Point;
@@ -18,8 +17,8 @@ public interface Individual {
     static ArrayList<Integer[]> determinePath(Point initialPosition, Integer[] finalPosition) {
         Integer movesX = finalPosition[0] - initialPosition.getX();
         Integer movesY = finalPosition[1] - initialPosition.getY();
-        Integer signX =Integer.signum(movesX);
-        Integer signY =Integer.signum(movesY);
+        Integer signX = Integer.signum(movesX);
+        Integer signY = Integer.signum(movesY);
 
         ArrayList<Integer[]> path = new ArrayList<Integer[]>();
         if (Math.abs(movesX) > Math.abs(movesY)) {
@@ -53,10 +52,15 @@ public interface Individual {
 
         if (nextPoint.isFree()) {
             try {
-                if (dino instanceof MosasaurusIndividual) {nextPoint.placeDinausor((MosasaurusIndividual) dino);
-                } else if (dino instanceof DiplodocusIndividual) {nextPoint.placeDinausor((DiplodocusIndividual) dino);
-                } else if (dino instanceof PterodactylusIndividual) {nextPoint.placeDinausor((PterodactylusIndividual) dino);
-                } else if (dino instanceof TyrannosaurusIndividual) {nextPoint.placeDinausor((TyrannosaurusIndividual) dino);}
+                if (dino instanceof MosasaurusIndividual) {
+                    nextPoint.placeDinausor((MosasaurusIndividual) dino);
+                } else if (dino instanceof DiplodocusIndividual) {
+                    nextPoint.placeDinausor((DiplodocusIndividual) dino);
+                } else if (dino instanceof PterodactylusIndividual) {
+                    nextPoint.placeDinausor((PterodactylusIndividual) dino);
+                } else if (dino instanceof TyrannosaurusIndividual) {
+                    nextPoint.placeDinausor((TyrannosaurusIndividual) dino);
+                }
             } catch (Exception e) {
                 System.err.println("Error stepping dino");
             }
@@ -75,12 +79,12 @@ public interface Individual {
         } else if (nextPoint.isAnObstacle())
             throw new Exception("Encountered a obstacle");
         else if (nextPoint.getDinausor() != null) {
-            if (dino.getMap().isPointInSafeZone(initialPosition))throw new Exception("Encountered a dinosaur in safe zone");
+            if (dino.getMap().isPointInSafeZone(initialPosition) && dino.getMap().isPointInSafeZone(nextPoint))
+                throw new Exception("Encountered a dinosaur in safe zone");
 
             Dinosaur otherDino = nextPoint.getDinausor();
 
             Dinosaur.meet(dino, otherDino);
-
             throw new Exception("Encountered a dinosaur");
         } else
             System.out.println("Unknown entity encoutered during movement...");
@@ -90,7 +94,7 @@ public interface Individual {
     public default void move(Dinosaur dino) {
 
         Point initialPosition = new Point(0, 0);
-        Integer[] finalPosition = new Integer[]{0,0};
+        Integer[] finalPosition = new Integer[] { 0, 0 };
         ArrayList<Integer[]> moves = new ArrayList<Integer[]>();
 
         try {
@@ -100,35 +104,50 @@ public interface Individual {
             return;
         }
 
-
         if (dino.getEnergyPoints() <= 0) {
-            System.out.println("Cannot move not enough EP");
-            // DIE
-            return;
-        }else if(dino.getMap().isPointInSafeZone(initialPosition) && dino.getCollectedMessages().size() >= Individual.maxKnowledge){
             try{
-                if (dino instanceof MosasaurusIndividual) {Dinosaur.meet(dino,MosasaurusMaster.getInstance());
-                } else if (dino instanceof DiplodocusIndividual) {Dinosaur.meet(dino,DiplodocusMaster.getInstance());
-                } else if (dino instanceof PterodactylusIndividual) {Dinosaur.meet(dino,PterodactylusMaster.getInstance());
-                } else if (dino instanceof TyrannosaurusIndividual) {Dinosaur.meet(dino,TyrannosaurusMaster.getInstance());}
-            }catch(Exception e){
+                dino.getMap().killDinausor(dino,"OB");
+            }catch(Exception e ){
+            }
+            return;
+        } else if (dino.getMap().isPointInSafeZone(initialPosition)
+                && dino.getCollectedMessages().size() >= Individual.maxKnowledge) {
+            try {
+                if (dino instanceof MosasaurusIndividual) {
+                    Dinosaur.meet(dino, MosasaurusMaster.getInstance());
+                } else if (dino instanceof DiplodocusIndividual) {
+                    Dinosaur.meet(dino, DiplodocusMaster.getInstance());
+                } else if (dino instanceof PterodactylusIndividual) {
+                    Dinosaur.meet(dino, PterodactylusMaster.getInstance());
+                } else if (dino instanceof TyrannosaurusIndividual) {
+                    Dinosaur.meet(dino, TyrannosaurusMaster.getInstance());
+                }
+            } catch (Exception e) {
                 System.err.println("something went wrong");
             }
             return;
-        }else if(dino.getMap().isPointInSafeZone(initialPosition) && dino.getEnergyPoints()<Individual.maxEnergyAfterRest){
+        } else if (dino.getMap().isPointInSafeZone(initialPosition)
+                && dino.getEnergyPoints() < Individual.maxEnergyAfterRest) {
             dino.increaseEP(Individual.restAmount);
             return;
-        }else if (dino.getCollectedMessages().size() >= Individual.maxKnowledge
-                || dino.getEnergyPoints() <= Individual.minEnergyBeforeTired) {
-                    try{
-                        if (dino instanceof MosasaurusIndividual) {finalPosition = dino.getMap().getDirectionToSafeZone((MosasaurusIndividual)dino);
-                        } else if (dino instanceof DiplodocusIndividual) {finalPosition = dino.getMap().getDirectionToSafeZone((DiplodocusIndividual)dino);
-                        } else if (dino instanceof PterodactylusIndividual) {finalPosition = dino.getMap().getDirectionToSafeZone((PterodactylusIndividual)dino);
-                        } else if (dino instanceof TyrannosaurusIndividual) {finalPosition = dino.getMap().getDirectionToSafeZone((TyrannosaurusIndividual)dino);}
-                    }catch(Exception e){
-                        System.out.println("Something went wrong");
+        } else if ((dino.getCollectedMessages().size() >= Individual.maxKnowledge
+                || dino.getEnergyPoints() <= Individual.minEnergyBeforeTired) && dino.getRage() <= 2) {
+            try {
+                    if (dino instanceof MosasaurusIndividual) {
+                        finalPosition = dino.getMap().getDirectionToSafeZone((MosasaurusIndividual) dino);
+                    } else if (dino instanceof DiplodocusIndividual) {
+                        finalPosition = dino.getMap().getDirectionToSafeZone((DiplodocusIndividual) dino);
+                    } else if (dino instanceof PterodactylusIndividual) {
+                        finalPosition = dino.getMap().getDirectionToSafeZone((PterodactylusIndividual) dino);
+                    } else if (dino instanceof TyrannosaurusIndividual) {
+                        finalPosition = dino.getMap().getDirectionToSafeZone((TyrannosaurusIndividual) dino);
                     }
-                    if(finalPosition.length == 0){return;}
+                }catch (Exception e) {
+                System.out.println("Something went wrong");
+            }
+            if (finalPosition.length == 0) {
+                return;
+            }
         } else {
             try {
                 // Get possible moves for dino
@@ -138,10 +157,11 @@ public interface Individual {
                 System.out.println("Error getting moves");
                 // Something happenned
             }
-            if (moves.size() == 0) return;
-            try{
+            if (moves.size() == 0)
+                return;
+            try {
                 finalPosition = moves.get(Individual.dice.randRange(moves.size() - 1));
-            }catch(Exception e){
+            } catch (Exception e) {
                 System.out.println("Error generating random number");
             }
         }
@@ -153,17 +173,23 @@ public interface Individual {
         for (Integer[] step : path) {
             Dinosaur oldDino = dino;
             try {
-                System.out.println(initialPosition.toString() +  "\nStepping to : " + finalPosition[0] + "," + finalPosition[1]);
+                System.out.println(
+                        initialPosition.toString() + "\nStepping to : " + finalPosition[0] + "," + finalPosition[1]);
                 dino = this.step(dino, new Integer[] { step[0] + dino.getMap().getPoint(dino).getX(),
                         step[1] + dino.getMap().getPoint(dino).getY() });
                 dino.decreaseEP(Individual.movementCost);
             } catch (Exception e) {
                 dino = oldDino;
-                break;
+                if(dino.getRage()>2){
+
+                }else{
+                    dino.setRage(dino.getRage() + 1);
+                }
+
+                return;
             }
+            
         }
 
     }
-
-    
 }

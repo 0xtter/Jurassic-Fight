@@ -14,8 +14,6 @@ import Individuals.TyrannosaurusMaster;
 import Map.Map;
 
 public class Main {
-    
-    private static final Logger log = Logger.getLogger(Main.class.getName()); 
     public static void main(String[] args) throws Exception {
 
         final int MAX_STEPS = 10000;
@@ -98,7 +96,7 @@ public class Main {
 
                         }
                     }catch(Exception e){
-                        System.err.println("Error stepping :" + map.getPoint(dino).toString());
+                        System.err.println("Error stepping : [ " + x+ " , " +y + " ]");
                     }
                 }
             }

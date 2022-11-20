@@ -11,6 +11,15 @@ import Mechanics.Random;
 public abstract class Dinosaur extends LivingBeeing {
 
     private int energyPoints;
+    private int rage = 0;
+    public int getRage() {
+        return rage;
+    }
+
+    public void setRage(int rage) {
+        this.rage = rage;
+    }
+
     private Alliance allianceMadeWith;
 
     public Alliance getAllianceMadeWith() {

@@ -2,15 +2,13 @@ package Mechanics;
 //      Linear congruent generator program.
 //      seed1 = (seed0 * multiplicator + increment ) % modulus
 
-import java.util.concurrent.ThreadLocalRandom;
-
 // Conditions to be met to obtain the maximum period of the generator:
 //      -The increment and the modulus are relatively prime: PGCD(modulus, increment) = 1
 //      -The number (multiplier - 1) is a multiple of each prime number p dividing the modulus.
 //      -The number (multiplier - 1) is a multiple of 4 if the module is one.
 
 public class Random {
-    private static Integer seed = 12;
+    private static Integer seed = 5;
     private static Integer modulus = 256; // Or 2**8 which facilitates Euclidean division.
     private static Integer multiplicator = 137; //(137-1) = 136 is a multiple of 2, only prime number dividing the modulus and a multiple of 4.
     private static Integer increment = 187; // Prime with the modulus. PGCD(187, 256) = 1.

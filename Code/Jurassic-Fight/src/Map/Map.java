@@ -1,6 +1,5 @@
 package Map;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -366,8 +365,6 @@ public class Map {
      */
     public ArrayList<Integer[]> getAvailableMoves(int x, int y) {
         ArrayList<Integer[]> moves = new ArrayList<>();
-        
-        Point currentPoint = getPoint(x, y);    // to be sure that the point exists.
 
         Point tmpP = null;
 
@@ -381,17 +378,7 @@ public class Map {
             //{ -1, -1 },
             { 0, -1 },
             //{ 1, -1 }
-        }; // Movements of a knight (chess) : see https://en.wikipedia.org/wiki/Knight_(chess)#Movement
-        // Integer movesAvailable[][] = {
-        //     { -1, 2 },
-        //     { 1, 2 },
-        //     { 2, -1 },
-        //     { 2, 1 },
-        //     { 1, -2 },
-        //     { -1, -2 },
-        //     { -2, -1 },
-        //     { -2, 1 }
-        // }; // Movements of a knight (chess) : see https://en.wikipedia.org/wiki/Knight_(chess)#Movement
+        }; 
         
         // search available points next to current point
         for (Integer currenMove[] : movesAvailable) {

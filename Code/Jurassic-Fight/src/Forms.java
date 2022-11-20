@@ -19,6 +19,7 @@ public class Forms {
             try {
                 Integer n = Integer.parseInt(input);
                 if (min <= n && n <= max) {
+                    myObj.close();
                     return n;
                 } else {
                     System.out.println(String.format("Veuillez saisir un entier entre %d et %d", min, max));
