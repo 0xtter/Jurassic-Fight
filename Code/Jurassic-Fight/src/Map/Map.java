@@ -132,7 +132,7 @@ public class Map {
             Set<String> initKnowledge = new HashSet<>(Arrays.asList( String.format("p%d", i) ));
             dino.collectMessages(initKnowledge);
             this.safezonePtero.get(i).placeDinausor(dino);
-            this.safezonePtero.get(i).setSymbol(String.format("T%d", i));
+            this.safezonePtero.get(i).setSymbol(String.format("P%d", i));
         }
 
         // DIPLO

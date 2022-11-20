@@ -56,42 +56,38 @@ public class Main {
                     // act according to the situation (figth, share knowledge, etc...)
                     try{
                         if(dino instanceof MosasaurusIndividual){
-                            System.out.println(map.getPoint(x, y).toString());
                             MosasaurusIndividual dinoCast = (MosasaurusIndividual) dino;
                             dinoCast.move((MosasaurusIndividual)dino);
                             statestr += String.format(
                                 "%s : (%d) %s \n",
-                                map.getPoint(x, y).getSymbol(),
+                                map.getPoint(dino).getSymbol(),
                                 dinoCast.getCollectedMessages().size(),
                                 dinoCast.getCollectedMessages().toString());
 
                         }else if(dino instanceof DiplodocusIndividual){
-                            System.out.println(map.getPoint(x, y).toString());
                             DiplodocusIndividual dinoCast = (DiplodocusIndividual) dino;
                             dinoCast.move((DiplodocusIndividual)dino);
                             statestr += String.format(
                                 "%s : (%d) %s \n",
-                                map.getPoint(x, y).getSymbol(),
+                                map.getPoint(dino).getSymbol(),
                                 dinoCast.getCollectedMessages().size(),
                                 dinoCast.getCollectedMessages().toString());
 
                         }else if(dino instanceof PterodactylusIndividual){
-                            System.out.println(map.getPoint(x, y).toString());
                             PterodactylusIndividual dinoCast = (PterodactylusIndividual) dino;
                             dinoCast.move((PterodactylusIndividual)dino);
                             statestr += String.format(
                                 "%s : (%d) %s \n",
-                                map.getPoint(x, y).getSymbol(),
+                                map.getPoint(dino).getSymbol(),
                                 dinoCast.getCollectedMessages().size(),
                                 dinoCast.getCollectedMessages().toString());
     
                         }else if(dino instanceof TyrannosaurusIndividual){
-                            System.out.println(map.getPoint(x, y).toString());
                             TyrannosaurusIndividual dinoCast = (TyrannosaurusIndividual) dino;
                             dinoCast.move((TyrannosaurusIndividual)dino);
                             statestr += String.format(
                                 "%s : (%d) %s \n",
-                                map.getPoint(x, y).getSymbol(),
+                                map.getPoint(dino).getSymbol(),
                                 dinoCast.getCollectedMessages().size(),
                                 dinoCast.getCollectedMessages().toString());
 
