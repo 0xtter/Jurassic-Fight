@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 import org.apache.log4j.Logger;
 
 import Individuals.Dinosaur;
@@ -13,7 +11,6 @@ import Individuals.Tyrannosaurus;
 import Individuals.TyrannosaurusIndividual;
 import Individuals.TyrannosaurusMaster;
 import Map.Map;
-import Map.Point;
 
 public class Main {
     
@@ -26,6 +23,13 @@ public class Main {
         Integer nbLines = Forms.askForInteger(5, 30, "Saisir le nombre de la lignes de la carte (min 5, max 30)");
         Integer nbCol = Forms.askForInteger(5, 30, "Saisir le nombre de la colonnes de la carte (min 5, max 30)");
 
+        // Pterodactylus.setAlliance(Alliance.DiplodocusMosasaurus);
+        // Diplodocus.setAlliance(Alliance.PterodactylusTyrannosaurus);
+        // Tyrannosaurus.setAlliance(Alliance.DiplodocusMosasaurus);
+        // Mosasaurus.setAlliance(Alliance.PterodactylusTyrannosaurus);
+
+
+        
         Map map = new Map(nbLines, nbCol);
         map.populate();          // populate and attribute init knowledge (except masters)
         map.generateObstacles(); // TO-DO Aleatoire obstacles !!!
