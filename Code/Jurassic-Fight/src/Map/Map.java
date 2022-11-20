@@ -1,6 +1,5 @@
 package Map;
 
-import java.util.concurrent.ThreadLocalRandom;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,6 +19,7 @@ import Individuals.PterodactylusMaster;
 import Individuals.Tyrannosaurus;
 import Individuals.TyrannosaurusIndividual;
 import Individuals.TyrannosaurusMaster;
+import Mechanics.Random;
 
 public class Map {
 
@@ -191,14 +191,14 @@ public class Map {
         }
     }
 
-    public void generateObstacles() {
-        // on selectionne arbitrairement 1 dixieme de la map pour etre
+    public void generateObstacles() throws Exception {
+        // on selectionne arbitrairement 1 vingtième de la map pour etre
         // des obstacles
-        int nbObst = (int) Math.floor((this.nbC * this.nbL) / 100);
+        int nbObst = (int) Math.floor((this.nbC * this.nbL) / 20);
         int count = 0;
         while (count < nbObst) {
-            int yRand = ThreadLocalRandom.current().nextInt(0, this.nbC);
-            int xRand = ThreadLocalRandom.current().nextInt(0, this.nbL);
+            Integer xRand = Random.getInstance().randRange(this.nbL);
+            Integer yRand = Random.getInstance().randRange(this.nbC);
             try {
                 placeObstacle("OB", xRand, yRand);
                 count++;
