@@ -8,7 +8,7 @@ package Mechanics;
 //      -The number (multiplier - 1) is a multiple of 4 if the module is one.
 
 public class Random {
-    private static Integer seed = 22;
+    private static Integer seed = 12;
     private static Integer modulus = 256; // Or 2**8 which facilitates Euclidean division.
     private static Integer multiplicator = 137; //(137-1) = 136 is a multiple of 2, only prime number dividing the modulus and a multiple of 4.
     private static Integer increment = 187; // Prime with the modulus. PGCD(187, 256) = 1.

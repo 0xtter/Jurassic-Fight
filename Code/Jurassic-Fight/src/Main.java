@@ -99,7 +99,7 @@ public class Main {
 
                         }
                     }catch(Exception e){
-                        System.err.println("Error stepping dino 1");
+                        System.err.println("Error stepping :" + map.getPoint(dino).toString());
                     }
                 }
             }

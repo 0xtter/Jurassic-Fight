@@ -370,13 +370,13 @@ public class Map {
         
         Integer movesAvailable[][] = {
             { 1, 0 },
-            { 1, 1 },
+            //{ 1, 1 },
             { 0, 1 },
-            { -1, 1 },
+            //{ -1, 1 },
             {-1, 0 },
-            { -1, -1 },
+            //{ -1, -1 },
             { 0, -1 },
-            { 1, -1 }
+            //{ 1, -1 }
         }; // Movements of a knight (chess) : see https://en.wikipedia.org/wiki/Knight_(chess)#Movement
         // Integer movesAvailable[][] = {
         //     { -1, 2 },

@@ -1,5 +1,6 @@
 package Individuals;
 
+import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import Mechanics.Random;
 import Map.Point;
@@ -17,8 +18,8 @@ public interface Individual {
     static ArrayList<Integer[]> determinePath(Point initialPosition, Integer[] finalPosition) {
         Integer movesX = finalPosition[0] - initialPosition.getX();
         Integer movesY = finalPosition[1] - initialPosition.getY();
-        Integer signX = movesX / Math.abs(movesX);
-        Integer signY = movesY / Math.abs(movesY);
+        Integer signX =Integer.signum(movesX);
+        Integer signY =Integer.signum(movesY);
 
         ArrayList<Integer[]> path = new ArrayList<Integer[]>();
         if (Math.abs(movesX) > Math.abs(movesY)) {
