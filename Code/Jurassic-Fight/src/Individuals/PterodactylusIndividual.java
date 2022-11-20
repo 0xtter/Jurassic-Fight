@@ -8,6 +8,9 @@ public class PterodactylusIndividual extends Pterodactylus implements Individual
         super.setAllianceMadeWith(Alliance.PterodactylusTyrannosaurus);
     }
 
-
+    @Override
+    public void introduiceMyself() {
+        System.out.println("I am a Pterodactylus Individual !");
+    }
 
 }

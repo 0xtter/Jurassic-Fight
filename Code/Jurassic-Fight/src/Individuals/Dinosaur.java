@@ -22,6 +22,8 @@ public abstract class Dinosaur extends LivingBeeing {
 
     private Alliance allianceMadeWith;
 
+    public abstract void introduiceMyself();
+
     public Alliance getAllianceMadeWith() {
         return allianceMadeWith;
     }

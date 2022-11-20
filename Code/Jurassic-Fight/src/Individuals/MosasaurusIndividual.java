@@ -8,5 +8,9 @@ public class MosasaurusIndividual extends Mosasaurus implements Individual {
         super.setAllianceMadeWith(Alliance.DiplodocusMosasaurus);
     }
 
+    @Override
+    public void introduiceMyself() {
+        System.out.println("I am a Mosasaurus Individual !");
+    }
 
 }
