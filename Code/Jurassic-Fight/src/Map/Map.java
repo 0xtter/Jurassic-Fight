@@ -189,7 +189,7 @@ public class Map {
      * @return { n, m }
      */
     public Integer[] getShape() {
-        Integer shape[] = { this.nbL, this.nbL };
+        Integer shape[] = { this.nbL, this.nbC };
         return shape;
     }
 
