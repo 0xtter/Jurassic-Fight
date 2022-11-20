@@ -2,6 +2,8 @@ package Mechanics;
 //      Linear congruent generator program.
 //      seed1 = (seed0 * multiplicator + increment ) % modulus
 
+import java.util.concurrent.ThreadLocalRandom;
+
 // Conditions to be met to obtain the maximum period of the generator:
 //      -The increment and the modulus are relatively prime: PGCD(modulus, increment) = 1
 //      -The number (multiplier - 1) is a multiple of each prime number p dividing the modulus.
@@ -56,6 +58,9 @@ public class Random {
             throw new Exception("Please, choose a number between 0 and 256.");
         }
         else{
+            // Integer randomInt = ThreadLocalRandom.current().nextInt(0, maxInteger + 1);
+            // return randomInt;
+            maxInteger++;
             seed = (seed * multiplicator + increment ) % modulus;
             return(seed*maxInteger/256); //Bring back over a range of 0 to .
         }

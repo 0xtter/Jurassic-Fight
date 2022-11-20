@@ -9,7 +9,6 @@ import Individuals.MosasaurusIndividual;
 import Individuals.MosasaurusMaster;
 import Individuals.PterodactylusIndividual;
 import Individuals.PterodactylusMaster;
-import Individuals.Tyrannosaurus;
 import Individuals.TyrannosaurusIndividual;
 import Individuals.TyrannosaurusMaster;
 import Map.Map;
@@ -144,6 +143,10 @@ public class Main {
                 // si "finir" on termine la simulation
                 pauseAtEndOfStep = input.equals("finir") ? false : true;
             }
+            System.out.println("Master DiplodocusMaster has (knowledge):" + "[ " + DiplodocusMaster.getInstance().getCollectedMessages().size() +  " ]" + DiplodocusMaster.getInstance().getCollectedMessages().toString());
+            System.out.println("Master MosasaurusMaster has (knowledge):" + "[ " + MosasaurusMaster.getInstance().getCollectedMessages().size() +  " ]" + MosasaurusMaster.getInstance().getCollectedMessages().toString());
+            System.out.println("Master PterodactylusMaster has (knowledge):" + "[ " + PterodactylusMaster.getInstance().getCollectedMessages().size() +  " ]" + PterodactylusMaster.getInstance().getCollectedMessages().toString());
+            System.out.println("Master TyrannosaurusMaster has (knowledge):" + "[ " + TyrannosaurusMaster.getInstance().getCollectedMessages().size() +  " ]" + TyrannosaurusMaster.getInstance().getCollectedMessages().toString());
             step++;
             dinoSeen.removeAll(dinoSeen);
         }
