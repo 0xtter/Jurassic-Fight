@@ -21,4 +21,9 @@ public class PterodactylusMaster extends Pterodactylus implements Master {
         return lUnique;
     }
 
+    @Override
+    public void introduiceMyself() {
+        System.out.println("I am a Pterodactylus Master !");
+    }
+
 }

@@ -21,4 +21,9 @@ public class TyrannosaurusMaster extends Tyrannosaurus implements Master {
         return lUnique;
     }
 
+    @Override
+    public void introduiceMyself() {
+        System.out.println("I am a Tyrannosaurus Master !");
+    }
+
 }

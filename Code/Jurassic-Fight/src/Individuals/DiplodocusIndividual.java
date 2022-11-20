@@ -7,6 +7,11 @@ public class DiplodocusIndividual extends Diplodocus implements Individual {
         super(gender, energyPoints,map);
     }
 
+    @Override
+    public void introduiceMyself() {
+        System.out.println("I am a Diplodocus Individual !");
+    }
+
     // /**
     //  * If encounter a dinosaur of same population, make union of all the knowledge.
     //  */

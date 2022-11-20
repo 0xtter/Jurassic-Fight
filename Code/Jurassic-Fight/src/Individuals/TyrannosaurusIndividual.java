@@ -9,6 +9,10 @@ public class TyrannosaurusIndividual extends Tyrannosaurus implements Individual
     }
 
 
+    @Override
+    public void introduiceMyself() {
+        System.out.println("I am a Tyrannosaurus Individual !");
+    }
 
 
 }

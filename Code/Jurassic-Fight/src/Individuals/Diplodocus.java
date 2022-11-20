@@ -10,4 +10,8 @@ public abstract class Diplodocus extends Dinosaur {
         super.setAllianceMadeWith(Alliance.DiplodocusMosasaurus);
     }
 
+    public void introduiceMyself() {
+        System.out.println("I am a Diplodocus !");
+    }
+
 }

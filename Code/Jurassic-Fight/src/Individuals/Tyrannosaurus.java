@@ -18,4 +18,8 @@ public abstract class Tyrannosaurus extends Dinosaur {
         allianceMadeWith = race;
     }
 
+    public void introduiceMyself() {
+        System.out.println("I am a Tyrannosaurus !");
+    }
+
 }

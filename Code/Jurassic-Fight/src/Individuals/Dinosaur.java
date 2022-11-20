@@ -13,6 +13,8 @@ public abstract class Dinosaur extends LivingBeeing {
     private int energyPoints;
     private Alliance allianceMadeWith;
 
+    public abstract void introduiceMyself();
+
     public Alliance getAllianceMadeWith() {
         return allianceMadeWith;
     }

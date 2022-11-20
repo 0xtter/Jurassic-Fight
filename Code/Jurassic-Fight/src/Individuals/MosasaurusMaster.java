@@ -21,4 +21,9 @@ public class MosasaurusMaster extends Mosasaurus implements Master {
         return lUnique;
     }
 
+    @Override
+    public void introduiceMyself() {
+        System.out.println("I am a Mosasaurus Master !");
+    }
+
 }

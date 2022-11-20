@@ -19,4 +19,9 @@ public class DiplodocusMaster extends Diplodocus implements Master {
     public static DiplodocusMaster getInstance() {
         return lUnique;
     }
+
+    @Override
+    public void introduiceMyself() {
+        System.out.println("I am a Diplodocus Master !");
+    }
 }
