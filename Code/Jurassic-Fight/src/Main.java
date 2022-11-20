@@ -1,7 +1,5 @@
 import java.util.ArrayList;
 
-import org.apache.log4j.Logger;
-
 import Individuals.Dinosaur;
 import Individuals.DiplodocusIndividual;
 import Individuals.DiplodocusMaster;
