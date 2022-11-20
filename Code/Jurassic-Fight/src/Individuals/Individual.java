@@ -7,7 +7,7 @@ import Map.Point;
 
 public interface Individual {
 
-    public static int maxKnowledge = 10;
+    public static int maxKnowledge = 5;
     public static int minEnergyBeforeTired = 30;
     public static int maxEnergyAfterRest = 80;
     public static int movementCost = 2;
@@ -153,6 +153,7 @@ public interface Individual {
         for (Integer[] step : path) {
             Dinosaur oldDino = dino;
             try {
+                System.out.println(initialPosition.toString() +  "\nStepping to : " + finalPosition[0] + "," + finalPosition[1]);
                 dino = this.step(dino, new Integer[] { step[0] + dino.getMap().getPoint(dino).getX(),
                         step[1] + dino.getMap().getPoint(dino).getY() });
                 dino.decreaseEP(Individual.movementCost);

@@ -104,12 +104,16 @@ public class Main {
             }
             
             // --> End of step
-
+            
             // display map and state of all dinausor
-
+            
             map.display();
             System.out.println(statestr);
             statestr = "";
+            System.out.println("Master DiplodocusMaster has (knowledge):" + "[ " + DiplodocusMaster.getInstance().getCollectedMessages().size() +  " ]" + DiplodocusMaster.getInstance().getCollectedMessages().toString());
+            System.out.println("Master MosasaurusMaster has (knowledge):" + "[ " + MosasaurusMaster.getInstance().getCollectedMessages().size() +  " ]" + MosasaurusMaster.getInstance().getCollectedMessages().toString());
+            System.out.println("Master PterodactylusMaster has (knowledge):" + "[ " + PterodactylusMaster.getInstance().getCollectedMessages().size() +  " ]" + PterodactylusMaster.getInstance().getCollectedMessages().toString());
+            System.out.println("Master TyrannosaurusMaster has (knowledge):" + "[ " + TyrannosaurusMaster.getInstance().getCollectedMessages().size() +  " ]" + TyrannosaurusMaster.getInstance().getCollectedMessages().toString());
 
             // Check if game is over
 
@@ -143,10 +147,6 @@ public class Main {
                 // si "finir" on termine la simulation
                 pauseAtEndOfStep = input.equals("finir") ? false : true;
             }
-            System.out.println("Master DiplodocusMaster has (knowledge):" + "[ " + DiplodocusMaster.getInstance().getCollectedMessages().size() +  " ]" + DiplodocusMaster.getInstance().getCollectedMessages().toString());
-            System.out.println("Master MosasaurusMaster has (knowledge):" + "[ " + MosasaurusMaster.getInstance().getCollectedMessages().size() +  " ]" + MosasaurusMaster.getInstance().getCollectedMessages().toString());
-            System.out.println("Master PterodactylusMaster has (knowledge):" + "[ " + PterodactylusMaster.getInstance().getCollectedMessages().size() +  " ]" + PterodactylusMaster.getInstance().getCollectedMessages().toString());
-            System.out.println("Master TyrannosaurusMaster has (knowledge):" + "[ " + TyrannosaurusMaster.getInstance().getCollectedMessages().size() +  " ]" + TyrannosaurusMaster.getInstance().getCollectedMessages().toString());
             step++;
             dinoSeen.removeAll(dinoSeen);
         }
