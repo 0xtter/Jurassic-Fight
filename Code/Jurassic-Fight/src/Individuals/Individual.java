@@ -1,8 +1,12 @@
 package Individuals;
 
 import java.util.ArrayList;
-import java.util.Random;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.sound.midi.Soundbank;
+
+import Mechanics.Random;
 import Map.Point;
 
 public interface Individual {
@@ -13,27 +17,13 @@ public interface Individual {
     public static int movementCost = 2;
     public static int restAmount = 10;
 
-    private int getRandomNumberInRange(int min, int max) {
-
-        if (min >= max) {
-            throw new IllegalArgumentException("max must be greater than min");
-        }
-
-        Random r = new Random();
-        return r.nextInt((max - min) + 1) + min;
-    }
+    public static Random dice = Random.createUniqueDice();
 
     static ArrayList<Integer[]> determinePath(Point initialPosition, Integer[] finalPosition) {
-        System.out.println("Initial pos : " + "[ " + initialPosition.getX() + ", " + initialPosition.getY() + " ]"
-                + " | final position : " + "[ " + finalPosition[0].toString() + ", " + finalPosition[1].toString()
-                + " ]");
         Integer movesX = finalPosition[0] - initialPosition.getX();
         Integer movesY = finalPosition[1] - initialPosition.getY();
         Integer signX = movesX / Math.abs(movesX);
         Integer signY = movesY / Math.abs(movesY);
-
-        System.out.println("diffX = " + movesX);
-        System.out.println("diffY = " + movesY);
 
         ArrayList<Integer[]> path = new ArrayList<Integer[]>();
         if (Math.abs(movesX) > Math.abs(movesY)) {
@@ -89,12 +79,12 @@ public interface Individual {
         } else if (nextPoint.isAnObstacle())
             throw new Exception("Encountered a obstacle");
         else if (nextPoint.getDinausor() != null) {
-            if (dino.getMap().isPointInSafeZone(initialPosition))
-                throw new Exception("Encountered a dinosaur in safe zone");
+            if (dino.getMap().isPointInSafeZone(initialPosition))throw new Exception("Encountered a dinosaur in safe zone");
 
             Dinosaur otherDino = nextPoint.getDinausor();
 
-            // if(otherDino instanceof Master && otherDino.getClass()== )
+            Dinosaur.meet(dino, otherDino);
+
             throw new Exception("Encountered a dinosaur");
         } else
             System.out.println("Unknown entity encoutered during movement...");
@@ -115,11 +105,21 @@ public interface Individual {
         }
 
 
-        if (dino.getEnergyPoints() == 0) {
+        if (dino.getEnergyPoints() <= 0) {
             System.out.println("Cannot move not enough EP");
             // DIE
             return;
-        }else if(dino.getMap().isPointInSafeZone(initialPosition) & dino.getEnergyPoints()<Individual.maxEnergyAfterRest){
+        }else if(dino.getMap().isPointInSafeZone(initialPosition) && dino.getCollectedMessages().size() >= Individual.maxKnowledge){
+            try{
+                if (dino instanceof MosasaurusIndividual) {Dinosaur.meet(dino,MosasaurusMaster.getInstance());
+                } else if (dino instanceof DiplodocusIndividual) {Dinosaur.meet(dino,DiplodocusMaster.getInstance());
+                } else if (dino instanceof PterodactylusIndividual) {Dinosaur.meet(dino,PterodactylusMaster.getInstance());
+                } else if (dino instanceof TyrannosaurusIndividual) {Dinosaur.meet(dino,TyrannosaurusMaster.getInstance());}
+            }catch(Exception e){
+                System.err.println("something went wrong");
+            }
+            return;
+        }else if(dino.getMap().isPointInSafeZone(initialPosition) && dino.getEnergyPoints()<Individual.maxEnergyAfterRest){
             dino.increaseEP(Individual.restAmount);
             return;
         }else if (dino.getCollectedMessages().size() >= Individual.maxKnowledge
@@ -138,30 +138,23 @@ public interface Individual {
                 // Get possible moves for dino
                 moves = dino.getMap().getAvailableMoves(initialPosition.getX(), initialPosition.getY());
 
-                System.out.println("Possible next positions:");
-                for (int c = 0; c < moves.size(); c++) {
-                    System.out.println("[ " + moves.get(c)[0].toString() + ", " + moves.get(c)[1].toString() + " ]");
-                }
             } catch (Exception e) {
                 System.out.println("Error getting moves");
                 // Something happenned
             }
             if (moves.size() == 0) return;
-
-            finalPosition = moves.get(this.getRandomNumberInRange(0, moves.size() - 1));
-            System.out.println("Choosed direction : " + "[ " + finalPosition[0].toString() + ", "
-                    + finalPosition[1].toString() + " ]");
+            try{
+                finalPosition = moves.get(Individual.dice.randRange(moves.size() - 1));
+            }catch(Exception e){
+                System.out.println("Error generating random number");
+            }
         }
 
         // Calculate the tiles the dino will step on
         ArrayList<Integer[]> path = determinePath(initialPosition, finalPosition);
-        for (Integer[] step : path) {
-            System.out.println("[ " + step[0] + " , " + step[1] + " ]");
-        }
 
         // Step on each tile of the path checking if he encounters a dino
         for (Integer[] step : path) {
-            System.out.println("Stepping by " + "[ " + step[0] + " , " + step[1] + " ]");
             Dinosaur oldDino = dino;
             try {
                 dino = this.step(dino, new Integer[] { step[0] + dino.getMap().getPoint(dino).getX(),
@@ -175,4 +168,5 @@ public interface Individual {
 
     }
 
+    
 }

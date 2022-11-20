@@ -4,17 +4,17 @@ import Map.Map;
 
 public abstract class Tyrannosaurus extends Dinosaur {
 
-    private static Race allianceMadeWith = Race.Pterodactylus;
+    private static Alliance allianceMadeWith = Alliance.PterodactylusTyrannosaurus;
 
     public Tyrannosaurus(boolean gender, int energyPoints, Map map) {
         super(gender, energyPoints,map);
     }
 
-    public static Race getAlliance() {
+    public static Alliance getAlliance() {
         return allianceMadeWith;
     }
 
-    public static void setAlliance(Race race) {
+    public static void setAlliance(Alliance race) {
         allianceMadeWith = race;
     }
 
