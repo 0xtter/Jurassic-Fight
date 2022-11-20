@@ -93,14 +93,14 @@ public class Map {
         
         // right top corner / DIPLO Dino
         for (int xi=0; xi<side; xi++) {
-            for (int yi=this.nbC-side; yi<this.nbC; yi++) {
+            for (int yi=this.nbC-1; yi>=this.nbC-side; yi--) {
                 this.safezoneDiplo.add(getPoint(xi, yi));
                 getPoint(xi, yi).setSymbol("~~");
             }
         }
 
         // left bottom corner / MOSA Dino
-        for (int xi=this.nbL-side; xi<this.nbL; xi++) {
+        for (int xi=this.nbL-1; xi>=this.nbL-side; xi--) {
             for (int yi=0; yi<side; yi++) {
                 this.safezoneMosa.add(getPoint(xi, yi));
                 getPoint(xi, yi).setSymbol("~~");
@@ -108,8 +108,8 @@ public class Map {
         }
 
         // right bottom corner / TYRA Dino
-        for (int xi=this.nbL-side; xi<this.nbL; xi++) {
-            for (int yi=this.nbC-side; yi<this.nbC; yi++) {
+        for (int xi=this.nbL-1; xi>=this.nbL-side; xi--) {
+            for (int yi=this.nbC-1; yi>=this.nbC-side; yi--) {
                 this.safezoneTyra.add(getPoint(xi, yi));
                 getPoint(xi, yi).setSymbol("~~");
             }
@@ -125,8 +125,10 @@ public class Map {
      */
     public void populate() throws Exception {
         
+        final int NB_DINAU_IN_SZ = (int) Math.floor(this.safezonePtero.size() / 2);
+
         // PTERO
-        for (int i=0; i<this.safezonePtero.size(); i++) {
+        for (int i=0; i<NB_DINAU_IN_SZ; i++) {
             Point tmpP = this.safezonePtero.get(i);
             if (tmpP.getX().equals(0) && tmpP.getY().equals(0)) {
                 // place master
@@ -143,7 +145,7 @@ public class Map {
         }
 
         // DIPLO
-        for (int i=0; i<this.safezoneDiplo.size(); i++) {
+        for (int i=0; i<NB_DINAU_IN_SZ; i++) {
             Point tmpP = this.safezoneDiplo.get(i);
             if (tmpP.getX().equals(0) && tmpP.getY().equals(this.nbL-1)) {
                 // place master
@@ -159,7 +161,7 @@ public class Map {
         }
 
         // MOSA
-        for (int i=0; i<this.safezoneMosa.size(); i++) {
+        for (int i=0; i<NB_DINAU_IN_SZ; i++) {
             Point tmpP = this.safezoneMosa.get(i);
             if (tmpP.getX().equals(this.nbL-1) && tmpP.getY().equals(0)) {
                 // place master
@@ -175,7 +177,7 @@ public class Map {
         }
 
         // TYRA
-        for (int i=0; i<this.safezoneTyra.size(); i++) {
+        for (int i=0; i<NB_DINAU_IN_SZ; i++) {
             Point tmpP = this.safezoneTyra.get(i);
             if (tmpP.getX().equals(this.nbL-1) && tmpP.getY().equals(this.nbC-1)) {
                 // place master
@@ -200,8 +202,10 @@ public class Map {
             Integer xRand = Random.getInstance().randRange(this.nbL);
             Integer yRand = Random.getInstance().randRange(this.nbC);
             try {
-                placeObstacle("OB", xRand, yRand);
-                count++;
+                if ( !isPointInSafeZone(getPoint(xRand, yRand)) ) {
+                    placeObstacle("OB", xRand, yRand);
+                    count++;
+                }
             } catch (Exception err) { }
         }
     }
